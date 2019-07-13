@@ -1,2 +1,2 @@
-# shakestation
-application that will create customized robotic shakes
+# frystation
+A robotic cell that will automate all the processes from ordering (via app) to finally deliver french fries
