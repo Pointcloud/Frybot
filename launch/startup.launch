@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find manipulator_h_bringup)/launch/robotis_manipulator.launch"/>
+    <include file="$(find manipulator_h_manager)/launch/manipulator_h_manager.launch"/>
+    <node name="setmode" pkg="frystation" type="setmode" />
+    <node name="manipulator_h_gui" pkg="manipulator_h_gui" type="manipulator_h_gui" />
+</launch> 
