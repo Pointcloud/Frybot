@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#This is the file with the instructions to make a shake
+#This is the file with the instructions to make fries
 #proof of concept 
 
 import rospy
@@ -35,7 +35,7 @@ def make_Fries():
 ######################### Make Shake ###########################
 ################################################################
 
-	#move the manipulator to the powder approach position 
+	#move the manipulator to the ...... position 
 	manipulator_move([-0.3490658503988659, 0.9948376736367678, 0.43493604959698695, 0.0, -1.5446163880149817, 0.06981317007977318])
 
 	#move the manipulator to the powder grip position 
@@ -61,11 +61,6 @@ def make_Fries():
 
 	# #move cup to mixer mix position 1
 	# manipulator_move([0.8517206749732327, 0.635299847725936, 0.3490658503988659, 0.0, -1.1344640137963142, 0.06981317007977318])
-
-	# #mix
-	# pubMixer.publish(1)
-	# time.sleep(15)
-	# pubMixer.publish(0)
 
 
 if __name__=='__main__':
