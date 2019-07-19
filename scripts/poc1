@@ -30,10 +30,9 @@ def manipulator_move(joints):
 
 def make_Fries():
 
-
-################################################################
-######################### Make Shake ###########################
-################################################################
+	################################################################
+	######################### Make Frys ############################
+	################################################################
 
 	#move the manipulator to the ...... position 
 	manipulator_move([-0.3490658503988659, 0.9948376736367678, 0.43493604959698695, 0.0, -1.5446163880149817, 0.06981317007977318])
@@ -47,21 +46,6 @@ def make_Fries():
 	#move the manipulator to the powder pour position 1
 	manipulator_move([-0.08726646259971647, 0.5235987755982988, 0.5585053606381855, 0.0, -1.2217304763960306, 0.06981317007977318])
 
-	# #move the manipulator to the cup grasp position 
-	# manipulator_move([0.0, 0.9948376736367678, 0.43493604959698695, 0.0, -1.5446163880149817, 0.06981317007977318])
-
-	# #close gripper to grasp cup
-	# pubGripper.publish(4)
-
-	# #lift cup to base top approach
-	# manipulator_move([0.0, 0.9599310885968813, 0.43493604959698695, 0.0, -1.5707963267948966, 0.06981317007977318])
-
-	# #move cup to mixer approach 
-	# manipulator_move([0.8517206749732327, 1.117010721276371, 0.15707963267948966, 0.0, -1.4835298641951802, 0.06981317007977318])
-
-	# #move cup to mixer mix position 1
-	# manipulator_move([0.8517206749732327, 0.635299847725936, 0.3490658503988659, 0.0, -1.1344640137963142, 0.06981317007977318])
-
 
 if __name__=='__main__':
 	try:
@@ -69,13 +53,13 @@ if __name__=='__main__':
 		MANIPULATOR_MOVING = False
 		
 		#create the ROS node for the application	
-		rospy.init_node('friesmaker')
+		rospy.init_node('frymaker')
 
 		#setup publisher to send manipulator joint commands
 		pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
 
 		#setup publisher to send gripper commands
-		pubGripper = rospy.Publisher('/bagcutterControl',Int32, queue_size=1)
+		pubGripper = rospy.Publisher('/gripperControl',Int32, queue_size=1)
 
 		#setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
 		rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
