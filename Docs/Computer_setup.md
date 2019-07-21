@@ -1,5 +1,6 @@
 Below are the steps to install and configure all sofware required to get the frystation up and running
 
+
 ##########################################
 ############# Ubuntu Software ############
 ##########################################
