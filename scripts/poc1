@@ -28,6 +28,21 @@ def manipulator_move(joints):
 		if not MANIPULATOR_MOVING: break
 		time.sleep(.1)
 
+def gripper_set_position(position):
+	msg = SyncWriteItem()
+	msg.item_name = "goal_position"
+	msg.joint_name = ["gripper"]
+	msg.value =[position]
+	pubGripperPosition.publish(msg)
+
+def gripper_enable_torque(enabled):
+	msg = SyncWriteItem()
+	msg.item_name = "torque_enable"
+	msg.joint_name = ["gripper"]
+	msg.value =[enabled]
+	pubGripperControl.publish(msg)
+
+
 def make_Fries():
 
 	################################################################
@@ -40,8 +55,11 @@ def make_Fries():
 	#move the manipulator to the powder grip position 
 	manipulator_move([-0.4363323129985824, 0.9948376736367678, 0.43493604959698695, 0.0, -1.5446163880149817, 0.06981317007977318])
 
-	#close gripper to grasp powder container
-	pubGripper.publish(4)
+	#set gripper to fully closed
+	gripper_set_position(740)
+
+	#set gripper to fully open
+	gripper_set_position(0)
 
 	#move the manipulator to the powder pour position 1
 	manipulator_move([-0.08726646259971647, 0.5235987755982988, 0.5585053606381855, 0.0, -1.2217304763960306, 0.06981317007977318])
@@ -58,8 +76,11 @@ if __name__=='__main__':
 		#setup publisher to send manipulator joint commands
 		pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
 
-		#setup publisher to send gripper commands
-		pubGripper = rospy.Publisher('/gripperControl',Int32, queue_size=1)
+		#setup publisher to send gripper control commands
+		pubGripperControl = rospy.Publisher('/robotis/sync_write_item',SyncWriteItem, queue_size=1)
+
+		#setup publisher to send gripper position commands
+		pubGripperPosition = rospy.Publisher('/robotis/direct/sync_write_item',SyncWriteItem, queue_size=1)
 
 		#setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
 		rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
