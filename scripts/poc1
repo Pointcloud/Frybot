@@ -85,11 +85,11 @@ if __name__=='__main__':
 
 		#setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
 		rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
-		
 		time.sleep(1) 
 
 		#run the main application
 		make_Fries()
+		
 	except rospy.ROSInterruptException:
 		pass
 
