@@ -33,6 +33,7 @@ add_message_files(
   FILES
   JointPose.msg
   KinematicsPose.msg
+  SyncWriteItem.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -77,7 +78,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/shakestation.cpp
+#   src/${PROJECT_NAME}/frystation.cpp
 # )
 
 
