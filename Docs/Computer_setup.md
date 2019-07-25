@@ -5,7 +5,9 @@ Below are the steps to install and configure all sofware required to get the fry
 ############# Ubuntu Software ############
 ##########################################
 
-    1) Download the Ubuntu image for Raspberry PI -https://downloads.ubiquityrobotics.com/pi.html
+    1) Download the Ubuntu image for Raspberry PI 3 -https://downloads.ubiquityrobotics.com/pi.html
+    2) From Ubuntu run  "sudo apt install gnome-disk-utility"
+    3) Run "sudo systemctl disable magni-base" to remove ubiquity robotics specific functionality
 
 ##########################################
 ############# ROS Software ###############
