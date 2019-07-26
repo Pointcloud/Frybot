@@ -7,7 +7,7 @@ import rospy
 import time
 from std_msgs.msg import String
 from std_msgs.msg import Int32
-from shakestation.msg import SyncWriteItem
+from frystation.msg import SyncWriteItem
 from robotis_controller_msgs.msg import StatusMsg
 
 def gripper_set_position(position):
