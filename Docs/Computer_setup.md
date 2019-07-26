@@ -66,3 +66,9 @@ Below are the steps to install and configure all sofware required to get the fry
 
         register USER_ID to dialout group in order to gain access to /dev/ttyUSB0
         $ sudo usermod -aG dialout USER_ID
+
+##########################################
+############### The Gripper ##############
+##########################################
+
+Other - servosix python directory may be required for the servo controller
