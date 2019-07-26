@@ -38,8 +38,7 @@ def make_Fries():
 
 	#set gripper to fully closed
 	gripper_set_position(740)
-	time.sleep(3) 
-	
+	time.sleep(1) 
 
 	#set gripper to fully open
 	gripper_set_position(0)
