@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find rh_p12_rn_manager)/launch/rh_p12_rn_manager.launch"/>
+    <node name="setmode" pkg="frystation" type="setmode" />
+</launch> 
