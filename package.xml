@@ -10,6 +10,8 @@
   <depend>geometry_msgs</depend>
   <depend>robotis_controller_msgs</depend>
   <depend>manipulator_h_base_module_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>open_manipulator_msgs</depend>
   <build_depend>rospy</build_depend>
   <build_depend>message_generation</build_depend>
   <build_export_depend>message_runtime</build_export_depend>

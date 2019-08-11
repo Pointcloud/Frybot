@@ -17,6 +17,9 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   robotis_controller_msgs
   manipulator_h_base_module_msgs
+  roscpp
+  sensor_msgs
+  open_manipulator_msgs
 )
 
 
@@ -62,8 +65,8 @@ generate_messages(
 
 catkin_package(
   #INCLUDE_DIRS include
-  LIBRARIES shakestation
-  CATKIN_DEPENDS rospy std_msgs geometry_msgs message_runtime
+  LIBRARIES frystation
+  CATKIN_DEPENDS rospy std_msgs geometry_msgs message_runtime roscpp sensor_msgs open_manipulator_msgs
   DEPENDS system_lib
 )
 
@@ -81,10 +84,25 @@ include_directories(
 #   src/${PROJECT_NAME}/frystation.cpp
 # )
 
+add_executable(teleop_keyboard src/teleop_keyboard.cpp)
+add_dependencies(teleop_keyboard ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(teleop_keyboard ${catkin_LIBRARIES} )
 
 #############
 ## Install ##
 #############
+
+install(TARGETS teleop_keyboard 
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+)
+
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
 
 ##########
 ## Test ##
