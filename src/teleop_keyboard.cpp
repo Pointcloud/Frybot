@@ -14,7 +14,8 @@
 * limitations under the License.
 *******************************************************************************/
 
-/* Authors: Darby Lim, Hye-Jong KIM, Ryan Shim, Yong-Ho Na */
+/* Original Authors: Darby Lim, Hye-Jong KIM, Ryan Shim, Yong-Ho Na */
+/* Modified to work on manipulator H by Rob Roberts - pointcloud */
 
 #include "../include/teleop_keyboard.h" 
 

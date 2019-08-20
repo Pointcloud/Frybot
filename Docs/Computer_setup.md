@@ -64,7 +64,7 @@
         $ sudo usermod -aG dialout USER_ID
 
 ##########################################
-############### The Gripper ##############
+############### Other ##############
 ##########################################
 
 Other - servosix python directory may be required for the servo controller
