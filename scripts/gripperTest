@@ -3,12 +3,12 @@
 #This is the file with the instructions to make fries
 #proof of concept 
 
-import rospy
+import rospy # pylint: disable=import-error
 import time
-from std_msgs.msg import String
-from std_msgs.msg import Int32
-from frystation.msg import SyncWriteItem
-from robotis_controller_msgs.msg import StatusMsg
+from std_msgs.msg import String  # pylint: disable=import-error
+from std_msgs.msg import Int32  # pylint: disable=import-error
+from frystation.msg import SyncWriteItem  # pylint: disable=import-error
+from robotis_controller_msgs.msg import StatusMsg  # pylint: disable=import-error
 
 def gripper_set_position(position):
 	msg = SyncWriteItem()

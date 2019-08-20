@@ -1,5 +1,4 @@
-Below are the steps to install and configure all sofware required to get the frystation up and running
-
+# Below are the steps to install and configure all sofware required to get the frystation up and running
 
 ##########################################
 ############# Ubuntu Software ############
@@ -13,13 +12,11 @@ Below are the steps to install and configure all sofware required to get the fry
 ############# ROS Software ###############
 ##########################################
 
-
     1) (optional) If you did not download an image with ROS pre-installed, follow the instructions below:
     
         sudo apt-get update
         $ sudo apt-get upgrade
         $ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_kinetic.sh && chmod 755 ./install_ros_kinetic.sh && bash ./install_ros_kinetic.sh
-
 
 ##########################################
 ############# The Manipulator ############
@@ -43,7 +40,6 @@ Below are the steps to install and configure all sofware required to get the fry
 
         register USER_ID to dialout group in order to gain access to /dev/ttyUSB0
         $ sudo usermod -aG dialout USER_ID
-
 
 ##########################################
 ############### The Gripper ##############
