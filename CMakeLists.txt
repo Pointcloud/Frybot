@@ -89,7 +89,7 @@ include_directories(
 ## Install ##
 #############
 
-install(TARGETS teleop_keyboard 
+install(TARGETS 
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
