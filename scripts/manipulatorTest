@@ -51,26 +51,15 @@ def make_Fries():
 	################################################################
 
 	#move the manipulator to the ...... position 
-	#manipulator_move([-0.3490658503988659, 0.9948376736367678, 0.43493604959698695, 0.0, -1.5446163880149817, 0.06981317007977318])
+	manipulator_move([-0.3490658503988659, 0.9948376736367678, 0.43493604959698695, 0.0, -1.5446163880149817, 0.06981317007977318])
+	time.sleep(1) 
 
 	#move the manipulator to the powder grip position 
-	#manipulator_move([-0.4363323129985824, 0.9948376736367678, 0.43493604959698695, 0.0, -1.5446163880149817, 0.06981317007977318])
-	
-	#enable gripper
-	gripper_enable_torque(True)
+	manipulator_move([-0.4363323129985824, 0.9948376736367678, 0.43493604959698695, 0.0, -1.5446163880149817, 0.06981317007977318])
 	time.sleep(1) 
-	
-
-	#set gripper to fully closed
-	gripper_set_position(740)
-	time.sleep(3) 
-	
-
-	#set gripper to fully open
-	gripper_set_position(0)
 
 	#move the manipulator to the powder pour position 1
-	#manipulator_move([-0.08726646259971647, 0.5235987755982988, 0.5585053606381855, 0.0, -1.2217304763960306, 0.06981317007977318])
+	manipulator_move([-0.08726646259971647, 0.5235987755982988, 0.5585053606381855, 0.0, -1.2217304763960306, 0.06981317007977318])
 
 
 if __name__=='__main__':
