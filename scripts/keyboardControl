@@ -4,19 +4,18 @@ import rospy
 from GetJointPose.srv import *
 
 def get_joint_pose_client(clockwise):
-    rospy.wait_for_service('/robotis/base/get_joint_pose')
-    try:
-        move_joint = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
-        response1 = add_two_ints(x, y)
-        return response1
-    except rospy.ServiceException, e:
-        print ("Service call failed: %s"%e)
+  rospy.wait_for_service('/robotis/base/get_joint_pose')
+  try:
+      move_joint = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
+      response1 = add_two_ints(x, y)
+      return response1
+  except rospy.ServiceException, e:
+    print ("Service call failed: %s"%e)
 
 def usage():
     return "%s [x y]"%sys.argv[0]
 
 if __name__ == "__main__":
-
 	clockwise = True
 	keyboard_input = input ("Press 1 to move Joint 1 clockwise, ! for counter clockwise")
 	if keyboard_input = "1"

@@ -29,21 +29,6 @@ def manipulator_move(joints):
 		if not MANIPULATOR_MOVING: break
 		time.sleep(.1)
 
-def gripper_set_position(position):
-	msg = SyncWriteItem()
-	msg.item_name = "goal_position"
-	msg.joint_name = ["gripper"]
-	msg.value =[position]
-	pubGripperPosition.publish(msg)
-
-def gripper_enable_torque(enabled):
-	msg = SyncWriteItem()
-	msg.item_name = "torque_enable"
-	msg.joint_name = ["gripper"]
-	msg.value =[enabled]
-	pubGripperControl.publish(msg)
-
-
 def make_Fries():
 
 	################################################################
