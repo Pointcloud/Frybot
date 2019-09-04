@@ -7,10 +7,10 @@ import rospy # pylint: disable=import-error
 import time
 from std_msgs.msg import String # pylint: disable=import-error
 from std_msgs.msg import Int32 # pylint: disable=import-error
-from shakestation.msg import JointPose # pylint: disable=import-error
-from shakestation.msg import SyncWriteItem # pylint: disable=import-error
+from frystation.msg import JointPose # pylint: disable=import-error
+from frystation.msg import SyncWriteItem # pylint: disable=import-error
 from robotis_controller_msgs.msg import StatusMsg # pylint: disable=import-error
-from servosix import ServoSix # pylint: disable=import-error
+
 
 def manipulator_status_callback(data):
 	global MANIPULATOR_MOVING
@@ -57,12 +57,6 @@ if __name__=='__main__':
 
 		#setup publisher to send manipulator joint commands
 		pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
-
-		#setup publisher to send gripper control commands
-		pubGripperControl = rospy.Publisher('/robotis/sync_write_item',SyncWriteItem, queue_size=1)
-
-		#setup publisher to send gripper position commands
-		pubGripperPosition = rospy.Publisher('/robotis/direct/sync_write_item',SyncWriteItem, queue_size=1)
 
 		#setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
 		rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
