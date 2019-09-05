@@ -29,6 +29,7 @@ if __name__ == "__main__":
     set_joint_pose(False)
   else:
     print("Neither 1 nor ! was pressed")
+    set_joint_pose(False)
     pass
 
 
