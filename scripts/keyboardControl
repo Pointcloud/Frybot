@@ -28,7 +28,8 @@ if __name__ == "__main__":
     print("! was pressed")
     set_joint_pose(False)
   else:
-    print("Neither 1 nor ! was pressed")
+    print("the following key was pressed: ")
+    print(keyboard_input)
     set_joint_pose(False)
     pass
 
