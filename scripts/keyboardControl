@@ -11,10 +11,12 @@ def set_joint_pose(clockwise):
   try:
     move_joint = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
     responseJointPose = move_joint()
+    print("try successful")
   except:
     print ("Service call failed")
     exit(-1)
-  print (responseJointPose)
+  print(responseJointPose)
+  print("should have printed something here")
 
 if __name__ == "__main__":
   keyboard_input = input ("Press 1 to move Joint 1 clockwise, ! for counter clockwise")
