@@ -7,28 +7,22 @@ from frystation.srv import GetJointPose # pylint: disable=import-error
 
 def set_joint_pose(clockwise):
   #determine the current joint positions
-  print("trying to call joint pose service")
   rospy.wait_for_service('/robotis/base/get_joint_pose')
   try:
     move_joint = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
     responseJointPose = move_joint(["joint1", "joint2", "joint3","joint4","joint5","joint6"])
-    print("try successful")
   except:
     print("Service call failed")
     exit(-1)
   print(responseJointPose)
-  print("should have printed something here")
 
 if __name__ == "__main__":
   keyboard_input = input ("Press 1 to move Joint 1 clockwise, ! for counter clockwise")
   if keyboard_input == "1":
-    print("1 was pressed")
     set_joint_pose(True)
   elif keyboard_input == "!":
-    print("! was pressed")
     set_joint_pose(False)
   else:
-    print("the following key was pressed: ")
     print(keyboard_input)
     set_joint_pose(False)
     pass
