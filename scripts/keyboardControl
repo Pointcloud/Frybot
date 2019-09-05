@@ -11,7 +11,7 @@ def set_joint_pose(clockwise):
   rospy.wait_for_service('/robotis/base/get_joint_pose')
   try:
     move_joint = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
-    responseJointPose = move_joint()
+    responseJointPose = move_joint(["joint1", "joint2", "joint3","joint4","joint5","joint6"])
     print("try successful")
   except:
     print("Service call failed")
