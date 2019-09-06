@@ -22,6 +22,9 @@ def set_joint_pose():
 def hello():
     position = set_joint_pose()
     return f'Hello Rob, the current manipulator joint positions: {position}'
+
+if __name__ == '__main__':
+    app.run()
     
 
     
