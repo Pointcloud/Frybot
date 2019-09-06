@@ -20,8 +20,8 @@ def set_joint_pose():
 
 @app.route('/')
 def hello():
-    position = set_joint_pose()
-    return f'Hello Rob, the current manipulator joint positions: {position}'
+    #position = set_joint_pose()
+    return "Hello Rob, it looks like flask is working!"
 
 if __name__ == '__main__':
     app.run()
