@@ -3,7 +3,9 @@
 import sys
 import rospy # pylint: disable=import-error
 from frystation.srv import GetJointPose # pylint: disable=import-error
-from flask import Flask # pylint: disable=import-error
+from flask import Flask, escape, request # pylint: disable=import-error
+
+app = Flask(__name__)
 
 def set_joint_pose():
   #determine the current joint positions
@@ -14,12 +16,13 @@ def set_joint_pose():
   except:
     print("Service call failed")
     exit(-1)
-  print(responseJointPose)
+  return(responseJointPose)
 
 @app.route('/')
 def hello():
-    return "Hello Rob, below are the current manipulator joint positions!"
-    get_joint_pose()
+    position = set_joint_pose()
+    return f'Hello Rob, the current manipulator joint positions: {position}'
+    
 
     
 
