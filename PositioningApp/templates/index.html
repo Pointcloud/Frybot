@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../static/css/main.css">
     <title>title</title>
+    <script>
+      window.console = window.console || function(t) {};
+    </script>
+    
+    <script>
+      if (document.location.search.match(/type=embed/gi)) {
+        window.parent.postMessage("resize", "*");
+      }
+    </script>
   </head>
   <body>
     <input type='range' min='-18' max='18' value='2' />
