@@ -21,7 +21,7 @@ html, body {
     margin: -0.75em 0;
     border: solid 1.5em transparent;
     padding: 0;
-    width:30em;
+    width:13em;
     height: 2.25em;
     background: repeating-linear-gradient(90deg, #c5b9b9, #c5b9b9 0.0625em, transparent 0.0625em, transparent 2em) no-repeat 50% 0.4375em border-box, repeating-linear-gradient(90deg, #c5b9b9, #c5b9b9 0.0625em, transparent 0.0625em, transparent 2em) no-repeat 50% 4.1875em border-box, linear-gradient(90deg, rgba(195, 183, 183, 0), #c3b7b7, rgba(195, 183, 183, 0)) no-repeat 50% 50% border-box;
     background-size: 12.0625em 0.625em, 12.0625em 0.625em, 100% 2.25em;
@@ -33,13 +33,13 @@ html, body {
   }
   input[type='range']::-webkit-slider-runnable-track {
     position: relative;
-    width:30em;
+    width:13em;
     height: 0.5em;
     border-radius: .1875em;
     background: rgba(202, 191, 191, 0.825);
   }
   input[type='range']::-moz-range-track {
-    width: 30em;
+    width: 13em;
     height: 0.5em;
     border-radius: .1875em;
     background: rgba(202, 191, 191, 0.825);
