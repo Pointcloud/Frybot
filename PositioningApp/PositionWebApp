@@ -1,30 +1,14 @@
 #!/usr/bin/env python
 
 from flask import Flask # pylint: disable=import-error
-import sys
-import rospy # pylint: disable=import-error
-#from GetJointPose.srv import * # pylint: disable=import-error
-from frystation.srv import GetJointPose # pylint: disable=import-error
 app = Flask(__name__)
-
-def get_joint_pose():
-  #determine the current joint positions
-  rospy.wait_for_service('/robotis/base/get_joint_pose')
-  try:
-    move_joint = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
-    responseJointPose = move_joint(["joint1", "joint2", "joint3","joint4","joint5","joint6"])
-  except:
-    print("Service call failed")
-    exit(-1)
-  print(responseJointPose)
 
 @app.route('/')
 def hello():
-    get_joint_pose()
-    return("Hello Rob")
+    return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0') #host is required to allow this to be served to an external computer
+    app.run(host='0.0.0.0', debug=True) #host is required to allow this to be served to an external computer
 
 
 
