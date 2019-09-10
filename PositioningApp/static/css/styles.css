@@ -12,7 +12,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     margin: 0;
-    transform: rotate(-90deg);
+
     background: #e9dbdb;
   }
   
