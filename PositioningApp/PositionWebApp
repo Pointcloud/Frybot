@@ -4,7 +4,8 @@ from flask import (Flask, request, session, g, redirect, url_for, abort, render_
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
+def index():
+    user = {'name:' : "Rob'"}
     return render_template('index.html')
 
 if __name__ == '__main__':
