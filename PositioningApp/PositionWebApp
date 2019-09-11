@@ -15,14 +15,12 @@ def get_joint_pose():
   except:
     print("Service call failed")
     exit(-1)
-  print(responseJointPose)
   return(responseJointPose)
 
 @app.route('/')
 def index():
     jointPose = get_joint_pose()
-    position = "180"
-    return render_template('index.html', jointPose=jointPose, position=position)
+    return render_template('index.html', jointPose=jointPose)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True) #host is required to allow this to be served to an external computer
