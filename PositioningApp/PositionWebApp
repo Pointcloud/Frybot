@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    position = 180
+    position = "180"
     return render_template('index.html', position=position)
 
 if __name__ == '__main__':
