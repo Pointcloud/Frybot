@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     user = {'name:' : "Rob'"}
-    return render_template('index.html')
+    return render_template('index.html', user=user)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True) #host is required to allow this to be served to an external computer
