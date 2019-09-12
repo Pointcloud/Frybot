@@ -7,12 +7,16 @@
   </head>
   <body translate="no">
       <div id="JointLabelContainer">
-        Joint1: <input type="number" name="joint1Position" min="-180" max="180" value="{{ (jointPose.joint_value[0]*57.296)|round|int }}" />
-        Joint2: <input type="number" name="joint2Position" min="-180" max="180" value="{{ (jointPose.joint_value[1]*57.296)|round|int }}" />
-        Joint3: <input type="number" name="joint3Position" min="-180" max="180" value="{{ (jointPose.joint_value[2]*57.296)|round|int }}" />
-        Joint4: <input type="number" name="joint4Position" min="-180" max="180" value="{{ (jointPose.joint_value[3]*57.296)|round|int }}" />
-        Joint5: <input type="number" name="joint5Position" min="-180" max="180" value="{{ (jointPose.joint_value[4]*57.296)|round|int }}" />
-        Joint6: <input type="number" name="joint6Position" min="-180" max="180" value="{{ (jointPose.joint_value[5]*57.296)|round|int }}" />
+        Joint1: <input type="number" name="joint1Position" min="-180" max="180" value="{{ (jointPose.joint_value[0]*57.296)|round|int }}" onchange="jointPositionInputUpdate(1)"/>
+        Joint2: <input type="number" name="joint2Position" min="-180" max="180" value="{{ (jointPose.joint_value[1]*57.296)|round|int }}" onchange="jointPositionInputUpdate(2)"/>
+        Joint3: <input type="number" name="joint3Position" min="-180" max="180" value="{{ (jointPose.joint_value[2]*57.296)|round|int }}" onchange="jointPositionInputUpdate(3)"/>
+        Joint4: <input type="number" name="joint4Position" min="-180" max="180" value="{{ (jointPose.joint_value[3]*57.296)|round|int }}" onchange="jointPositionInputUpdate(4)"/>
+        Joint5: <input type="number" name="joint5Position" min="-180" max="180" value="{{ (jointPose.joint_value[4]*57.296)|round|int }}" onchange="jointPositionInputUpdate(5)"/>
+        Joint6: <input type="number" name="joint6Position" min="-180" max="180" value="{{ (jointPose.joint_value[5]*57.296)|round|int }}" onchange="jointPositionInputUpdate(6)"/>
+      </div><br />
+      <div id="buttonContainer">
+        <button type="button" onclick="resetJointValues()">Reset to current</button>
+        <button type="button" onclick="updateJointValues()">Update joint values</button>
       </div>
     
       <div id="sliderContainer">
@@ -24,5 +28,20 @@
         <input type='range' min='-180' max='180' value='{{ jointPose.joint_value[5]*57.296 }}' />
       </div>
     </body>
+      <script>
+        function jointPositionInputUpdate(input) {
+          alert("the value in the text input changed!");
+        }
+      </script>
+      <script>
+        function resetJointValues() {
+          alert("this is the joint position update function!");
+        }
+      </script>
+      <script>
+        function updateJointValues() {
+          alert("time to update the joint values!");
+        }
+      </script>
     </html>
 </html>
