@@ -16,7 +16,7 @@
       </div><br />
       <div id="buttonContainer">
         <button type="button" onClick="document.location.reload(true)">Reset to current</button>
-        <button type="button" onclick="updateJointValues()">Update joint values</button>
+        <button type="button" onclick="updateJointValues()">Move Manipulator</button>
       </div>
     
       <div id="sliderContainer">
@@ -36,6 +36,7 @@
       </script>
       <script>
         function jointPositionSliderUpdate(input) {
+          document.getElementById('jointPositionInput'+ input).style.color = 'blue';
           document.getElementById('jointPositionInput'+ input).value=document.getElementById('slider'+ input).value;
         }
       </script>
