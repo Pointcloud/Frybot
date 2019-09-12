@@ -30,12 +30,13 @@
     </body>
       <script>
         function jointPositionInputUpdate(input) {
+          document.getElementById('jointPositionInput'+ input).style.color = 'blue';
           document.getElementById('slider'+ input).value=document.getElementById('jointPositionInput'+ input).value;
         }
       </script>
       <script>
         function jointPositionSliderUpdate(input) {
-          alert("the value in the text input changed!");
+          document.getElementById('jointPositionInput'+ input).value=document.getElementById('slider'+ input).value;
         }
       </script>
       <script>
