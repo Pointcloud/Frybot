@@ -48,12 +48,12 @@
             cache: "no-cache",
             headers: new Headers({"content-type": "application/json"}),
             body: JSON.stringify({
-              "joint1": document.getElementById('slider1').value,
-              "joint2": document.getElementById('slider2').value,
-              "joint3": document.getElementById('slider3').value,
-              "joint4": document.getElementById('slider4').value,
-              "joint5": document.getElementById('slider5').value,
-              "joint6": document.getElementById('slider6').value
+              "joint1": (document.getElementById('slider1').value)/57.296,
+              "joint2": (document.getElementById('slider2').value)/57.296,
+              "joint3": (document.getElementById('slider3').value)/57.296,
+              "joint4": (document.getElementById('slider4').value)/57.296,
+              "joint5": (document.getElementById('slider5').value)/57.296,
+              "joint6": (document.getElementById('slider6').value)/57.296
             })
           }).then(function (response) { 
           return response.text();
