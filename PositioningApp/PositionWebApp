@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from flask import (Flask, request, session, g, redirect, url_for, abort, render_template, flash, Response) # pylint: disable=import-error
+from flask import (Flask, request, session, g, redirect, url_for, abort, render_template, flash, Response, jsonify) # pylint: disable=import-error
 import sys
 import rospy # pylint: disable=import-error
 from frystation.srv import GetJointPose # pylint: disable=import-error
@@ -21,6 +21,14 @@ def get_joint_pose():
 def index():
     jointPose = get_joint_pose()
     return render_template('index.html', jointPose=jointPose)
+
+@app.route('/setJointAngles', methods=['POST'])
+def setJointAngles():
+    # POST request
+    if request.method == 'POST':
+        print('setting joint angles..')
+        print(request.get_json())  # parse as JSON
+        return 'OK', 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True) #host is required to allow this to be served to an external computer

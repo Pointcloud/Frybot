@@ -42,7 +42,18 @@
       </script>
       <script>
         function updateJointValues() {
-          alert("time to update the joint values!");
+          // POST
+          fetch('/setJointAngles', {
+          method: 'POST',
+          body: JSON.stringify({
+              "joint1": document.getElementById('jointPositionInput'+ input).value
+          })
+          }).then(function (response) { 
+          return response.text();
+          }).then(function (text) {
+          console.log('POST response: ');
+          console.log(text);
+          });
         }
       </script>
     </html>
