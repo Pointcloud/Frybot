@@ -24,11 +24,10 @@ def index():
 
 @app.route('/setJointAngles', methods=['POST'])
 def setJointAngles():
-    # POST request
-    if request.method == 'POST':
-        print('setting joint angles..')
-        print(request.get_json())  # parse as JSON
-        return 'OK', 200
+    print('setting joint angles..')
+    req = request.get_json()
+    print(req)
+    return 'OK', 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True) #host is required to allow this to be served to an external computer
