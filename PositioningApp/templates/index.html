@@ -43,10 +43,10 @@
       <script>
         function updateJointValues() {
           // POST
-          fetch('/setJointAngles', {
+          fetch('/setJointAnglespu', {
           method: 'POST',
           body: JSON.stringify({
-              "joint1": document.getElementById('jointPositionInput'+ input).value
+              "joint1": "0"
           })
           }).then(function (response) { 
           return response.text();
