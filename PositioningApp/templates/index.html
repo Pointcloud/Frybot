@@ -47,7 +47,7 @@
             method: 'POST',
             cache: "no-cache",
             headers: new Headers({"content-type": "application/json"}),
-            body: JSON.stringify({"joint1": 0})
+            body: JSON.stringify({"joint1": 0, "joint2": 90})
           }).then(function (response) { 
           return response.text();
           }).then(function (text) {
