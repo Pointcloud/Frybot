@@ -15,7 +15,7 @@ from robotis_controller_msgs.msg import StatusMsg # pylint: disable=import-error
 MANIPULATOR_MOVING = False
 
 #create the ROS node for the application
-threading.Thread(target=lambda: rospy.init_node('frystation_PositionWebApp')).start()	
+threading.Thread(target=lambda: rospy.init_node('frystation_PositionWebApp', disable_signals=True)).start()	
 
 app = Flask(__name__)
 
