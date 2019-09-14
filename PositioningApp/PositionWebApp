@@ -17,12 +17,6 @@ MANIPULATOR_MOVING = False
 #create the ROS node for the application
 threading.Thread(target=lambda: rospy.init_node('frystation_PositionWebApp', disable_signals=True)).start()	
 
-#setup publisher to send manipulator joint commands
-pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
-
-#setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
-rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
-
 app = Flask(__name__)
 
 def manipulator_status_callback(data):
@@ -64,6 +58,12 @@ def setJointAngles():
     req = request.get_json()
     manipulator_move(req)
     return 'Joint updates completed successfully', 200
+
+#setup publisher to send manipulator joint commands
+pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
+
+#setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
+rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
 
 if __name__ == '__main__':
     		 
