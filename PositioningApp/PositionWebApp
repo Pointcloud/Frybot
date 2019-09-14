@@ -58,13 +58,13 @@ if __name__ == '__main__':
   MANIPULATOR_MOVING = False
   
   #create the ROS node for the application	
-  rospy.init_node('frymaker')
+  #rospy.init_node('frymaker')
 
   #setup publisher to send manipulator joint commands
-  pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
+  #pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
 
   #setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
-  rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
+  #rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
   
   app.run(host='0.0.0.0', debug=True) #host is required to allow this to be served to an external computer
 
