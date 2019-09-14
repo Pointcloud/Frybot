@@ -18,10 +18,10 @@ MANIPULATOR_MOVING = False
 threading.Thread(target=lambda: rospy.init_node('frystation_PositionWebApp', disable_signals=True)).start()	
 
 #setup publisher to send manipulator joint commands
-#pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
+pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
 
 #setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
-#rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
+rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
 
 app = Flask(__name__)
 
