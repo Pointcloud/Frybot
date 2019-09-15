@@ -14,7 +14,8 @@ def manipulator_status_callback(data):
 	if data.status_msg == "End Trajectory":
 		MANIPULATOR_MOVING = False
 
-def manipulator_move(joints):
+def handle_manipulator_move(joints):
+	print("Starting manipulator joint move")
 	global MANIPULATOR_MOVING
 	MANIPULATOR_MOVING = True
 	msg = JointPose()
@@ -25,16 +26,12 @@ def manipulator_move(joints):
 	while time.time() < mustend:
 		if not MANIPULATOR_MOVING: break
 		time.sleep(.1)
-
-def handle_move_manipulator(req):
-	print("Starting manipulator joint move")
-	manipulator_move([req[0], req[1], req[2], req[3], req[4], req[5]])
 	return "Move Completed"
 
 def move_manipulator_server():
-	rospy.init_node('move_manipulator_server')
-	s = rospy.Service('manipulator_set_joint_values', GetJointPose, handle_move_manipulator)
-	print("Ready handle manipulator Move requests")
+	rospy.init_node('frystation/move_manipulator_server')
+	s = rospy.Service('frystation/move_manipulator_server', GetJointPose, handle_manipulator_move)
+	print("Ready to handle manipulator Move requests")
 	rospy.spin()
 
 if __name__ == "__main__":
