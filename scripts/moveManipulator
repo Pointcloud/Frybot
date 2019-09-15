@@ -29,8 +29,8 @@ def handle_manipulator_move(joints):
 	return "Move Completed"
 
 def move_manipulator_server():
-	rospy.init_node('frystation/move_manipulator_server')
-	s = rospy.Service('frystation/move_manipulator_server', GetJointPose, handle_manipulator_move)
+	rospy.init_node('move_manipulator_server')
+	s = rospy.Service('move_manipulator_server', GetJointPose, handle_manipulator_move)
 	print("Ready to handle manipulator Move requests")
 	rospy.spin()
 
