@@ -29,12 +29,11 @@ def index():
     return render_template('index.html', jointPose=jointPose)
 
 @app.route('/setJointAngles', methods=['POST'])
-def setJointAngles(jointAngles):
-  #set joint positions
+def setJointAngles():
   rospy.wait_for_service('/manipulator_set_joint_values')
   try:
     manipulator_set_joint_values = rospy.ServiceProxy('manipulator_set_joint_values', GetJointPose)
-    responseJointPose = manipulator_set_joint_values(jointAngles)
+    responseJointPose = manipulator_set_joint_values(request.get_json())
     return "joint position update successful"
   except:
     print("Service call failed")

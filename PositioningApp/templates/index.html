@@ -16,7 +16,7 @@
       </div><br />
       <div id="buttonContainer">
         <button type="button" onClick="document.location.reload(true)">Reset to current</button>
-        <button type="button" onclick="setJointValues()">Move Manipulator</button>
+        <button type="button" onclick="setJointAngles()">Move Manipulator</button>
       </div>
     
       <div id="sliderContainer">
@@ -41,7 +41,7 @@
         }
       </script>
       <script>
-        function setJointValues() {
+        function setJointAngles() {
           // POST
           fetch('/setJointAngles', {
             method: 'POST',
