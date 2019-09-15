@@ -10,11 +10,6 @@ from std_msgs.msg import Int32 # pylint: disable=import-error
 from frystation.msg import JointPose # pylint: disable=import-error
 from frystation.msg import SyncWriteItem # pylint: disable=import-error
 
-MANIPULATOR_MOVING = False
-
-#create the ROS node for the application
-threading.Thread(target=lambda: rospy.init_node('frystation_PositionWebApp', disable_signals=True)).start()	
-
 app = Flask(__name__)
 
 def get_joint_pose():
