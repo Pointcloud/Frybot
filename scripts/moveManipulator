@@ -29,7 +29,7 @@ def handle_manipulator_move(joints):
 	return "Move Completed"
 
 def move_manipulator_server():
-	rospy.init_node('move_manipulator_server')
+	rospy.init_node('manipulator_set_joint_values')
 	s = rospy.Service('manipulator_set_joint_values', GetJointPose, handle_manipulator_move)
 	print("Ready to handle manipulator Move requests")
 	rospy.spin()
