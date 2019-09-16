@@ -14,14 +14,11 @@ def manipulator_status_callback(data):
 	if data.status_msg == "End Trajectory":
 		MANIPULATOR_MOVING = False
 
-def handle_manipulator_move(joints):
+def handle_manipulator_move(jointPose):
 	print("Starting manipulator joint move")
 	global MANIPULATOR_MOVING
 	MANIPULATOR_MOVING = True
-	msg = JointPose()
-	msg.name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-	msg.value = [joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]]
-	pubManipulator.publish(msg)
+	pubManipulator.publish(jointPose)
 	mustend = time.time() + 10
 	while time.time() < mustend:
 		if not MANIPULATOR_MOVING: break
