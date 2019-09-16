@@ -35,7 +35,6 @@ def move_manipulator_server():
 	rospy.spin()
 
 if __name__ == "__main__":
-
 	#create global variable to identify whether the manipulator is currently moving
 	MANIPULATOR_MOVING = False
 
