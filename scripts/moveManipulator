@@ -5,7 +5,7 @@ import rospy # pylint: disable=import-error
 from std_msgs.msg import String # pylint: disable=import-error
 from std_msgs.msg import Int32 # pylint: disable=import-error
 from frystation.msg import JointPose # pylint: disable=import-error
-from frystation.srv import GetJointPose # pylint: disable=import-error
+from frystation.srv import SetJointPose # pylint: disable=import-error
 from frystation.msg import SyncWriteItem # pylint: disable=import-error
 from robotis_controller_msgs.msg import StatusMsg # pylint: disable=import-error
 
@@ -14,11 +14,14 @@ def manipulator_status_callback(data):
 	if data.status_msg == "End Trajectory":
 		MANIPULATOR_MOVING = False
 
-def handle_manipulator_move(jointPose):
+def handle_manipulator_move(SetJointPose):
 	print("Starting manipulator joint move")
 	global MANIPULATOR_MOVING
 	MANIPULATOR_MOVING = True
-	pubManipulator.publish(jointPose)
+	msg = JointPose()
+	msg.name = SetJointPose.joint_name
+	msg.value = SetJointPose.joint_value
+	pubManipulator.publish(msg)
 	mustend = time.time() + 10
 	while time.time() < mustend:
 		if not MANIPULATOR_MOVING: break
@@ -27,7 +30,7 @@ def handle_manipulator_move(jointPose):
 
 def move_manipulator_server():
 	rospy.init_node('manipulator_set_joint_values')
-	s = rospy.Service('manipulator_set_joint_values', GetJointPose, handle_manipulator_move)
+	s = rospy.Service('manipulator_set_joint_values', SetJointPose, handle_manipulator_move)
 	print("Ready to handle manipulator Move requests")
 	rospy.spin()
 

@@ -43,6 +43,7 @@ add_message_files(
  add_service_files(
    FILES
    GetJointPose.srv
+   SetJointPose.srv
  )
 
 ## Generate actions in the 'action' folder
