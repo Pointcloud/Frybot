@@ -37,7 +37,6 @@ def setJointAngles():
     srv.joint_value = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
     manipulator_set_joint_values = rospy.ServiceProxy('manipulator_set_joint_values', SetJointPose)
     myRequest = manipulator_set_joint_values(srv)
-    print("service request completed")
     return "joint position update successful"
   except:
     print("Service call failed")
