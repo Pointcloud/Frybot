@@ -32,7 +32,7 @@ def index():
 def setJointAngles():
   rospy.wait_for_service('/manipulator_set_joint_values')
   try:
-    print("calling manipultor_set_joint_values")
+    print("calling manipulator_set_joint_values")
     manipulator_set_joint_values = rospy.ServiceProxy('manipulator_set_joint_values', GetJointPose)
     responseJointPose = manipulator_set_joint_values(request.get_json())
     return "joint position update successful"

@@ -30,7 +30,7 @@ def handle_manipulator_move(joints):
 
 def move_manipulator_server():
 	rospy.init_node('move_manipulator_server')
-	s = rospy.Service('move_manipulator_server', GetJointPose, handle_manipulator_move)
+	s = rospy.Service('manipulator_set_joint_values', GetJointPose, handle_manipulator_move)
 	print("Ready to handle manipulator Move requests")
 	rospy.spin()
 
