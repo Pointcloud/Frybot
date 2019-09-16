@@ -33,17 +33,17 @@ def setJointAngles():
   rospy.wait_for_service('/manipulator_set_joint_values')
   try:
     print("calling manipulator_set_joint_values")
-    responseJointPose = request.get_json()
+    updatedJointPose = request.get_json()
     msg = JointPose()
     msg.name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-    msg.value = [responseJointPose['joint1'], responseJointPose['joint1'], responseJointPose['joint1'], responseJointPose['joint1'], responseJointPose['joint1'], responseJointPose['joint1']]
+    msg.value = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
     manipulator_set_joint_values = rospy.ServiceProxy('manipulator_set_joint_values', GetJointPose)
-    responseJointPose = manipulator_set_joint_values(msg)
+    myRequest = manipulator_set_joint_values(msg)
     return "joint position update successful"
   except:
     print("Service call failed")
     exit(-1)
-  return(responseJointPose)
+  return(myRequest)
 
 if __name__ == '__main__':
     		 
