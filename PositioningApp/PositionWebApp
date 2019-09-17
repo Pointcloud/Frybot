@@ -5,6 +5,7 @@ import sys
 import rospy # pylint: disable=import-error
 from flask import (Flask, request, session, g, redirect, url_for, abort, render_template, flash, Response, jsonify) # pylint: disable=import-error
 from frystation.srv import SetJointPose # pylint: disable=import-error
+from frystation.srv import GetJointPose # pylint: disable=import-error
 from std_msgs.msg import String # pylint: disable=import-error
 from std_msgs.msg import Int32 # pylint: disable=import-error
 from frystation.msg import SyncWriteItem # pylint: disable=import-error
