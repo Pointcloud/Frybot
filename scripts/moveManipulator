@@ -15,17 +15,17 @@ def manipulator_status_callback(data):
 		MANIPULATOR_MOVING = False
 
 def handle_manipulator_move(SetJointPose):
-	print("Starting manipulator joint move")
-	global MANIPULATOR_MOVING
-	MANIPULATOR_MOVING = True
-	msg = JointPose()
-	msg.name = SetJointPose.joint_name
-	msg.value = SetJointPose.joint_value
-	pubManipulator.publish(msg)
-	mustend = time.time() + 10
-	while time.time() < mustend:
-		if not MANIPULATOR_MOVING: break
-		time.sleep(.1)
+	# print("Starting manipulator joint move")
+	# global MANIPULATOR_MOVING
+	# MANIPULATOR_MOVING = True
+	# msg = JointPose()
+	# msg.name = SetJointPose.joint_name
+	# msg.value = SetJointPose.joint_value
+	# pubManipulator.publish(msg)
+	# mustend = time.time() + 10
+	# while time.time() < mustend:
+	# 	if not MANIPULATOR_MOVING: break
+	# 	time.sleep(.1)
 	return True
 
 def move_manipulator_server():
