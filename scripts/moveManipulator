@@ -27,7 +27,7 @@ def handle_manipulator_move(SetJointPose):
 	# 	if not MANIPULATOR_MOVING: break
 	# 	time.sleep(.1)
 	srv = SetJointPose()
-    srv.success= True
+	srv.success= True
 	print("In the moveManipulator callback")
 	return setJointPoseResponse(srv.success)
 
