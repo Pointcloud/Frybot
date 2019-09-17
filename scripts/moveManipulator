@@ -26,7 +26,7 @@ def handle_manipulator_move(SetJointPose):
 	while time.time() < mustend:
 		if not MANIPULATOR_MOVING: break
 		time.sleep(.1)
-	return "Move Completed"
+	return True
 
 def move_manipulator_server():
 	rospy.init_node('manipulator_set_joint_values')
