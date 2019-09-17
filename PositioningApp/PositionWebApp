@@ -41,7 +41,7 @@ def setJointAngles():
   except:
     print("Service call failed")
     exit(-1)
-  return("completed")
+  return(responseSetJointPose)
 
 if __name__ == '__main__':
     		 
