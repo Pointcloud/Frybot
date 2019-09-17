@@ -39,10 +39,11 @@ def setJointAngles():
     srv.joint_value = [0.0, -0.65, 0.0, 0.0, 0.6, 0.0]
     #manipulator_set_joint_values = rospy.ServiceProxy('manipulator_set_joint_values', SetJointPose)
     #responseSetJointPose = manipulator_set_joint_values(srv)
+    print(srv)
   except:
     print("Service call failed")
     exit(-1)
-  return(srv)
+  return("completed")
 
 if __name__ == '__main__':
     		 
