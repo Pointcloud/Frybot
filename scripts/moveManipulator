@@ -14,7 +14,7 @@ from robotis_controller_msgs.msg import StatusMsg # pylint: disable=import-error
 # 	if data.status_msg == "End Trajectory":
 # 		MANIPULATOR_MOVING = False
 
-def handle_manipulator_move(SetJointPose):
+def handle_manipulator_move(String):
 	# print("Starting manipulator joint move")
 	# global MANIPULATOR_MOVING
 	# MANIPULATOR_MOVING = True
@@ -26,11 +26,12 @@ def handle_manipulator_move(SetJointPose):
 	# while time.time() < mustend:
 	# 	if not MANIPULATOR_MOVING: break
 	# 	time.sleep(.1)
+	print("In the moveManipulator callback")
 	return True
 
-def move_manipulator_server():
+def manipulator_move_server():
 	rospy.init_node('manipulator_move_server')
-	s = rospy.Service('manipulator_set_joint_values', SetJointPose, handle_manipulator_move)
+	s = rospy.Service('manipulator_set_joint_values', String, handle_manipulator_move)
 	print("Ready to handle manipulator Move requests")
 	rospy.spin()
 
@@ -44,4 +45,4 @@ if __name__ == "__main__":
 	#setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
 	#rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
 	#time.sleep(1) 
-	move_manipulator_server()
+	manipulator_move_server()
