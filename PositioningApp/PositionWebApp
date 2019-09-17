@@ -16,12 +16,12 @@ def get_joint_pose():
   #determine the current joint positions
   rospy.wait_for_service('/robotis/base/get_joint_pose')
   try:
-    move_joint = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
-    responseJointPose = move_joint(["joint1", "joint2", "joint3","joint4","joint5","joint6"])
+    get_position = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
+    responseGetJointPose = get_position(["joint1", "joint2", "joint3","joint4","joint5","joint6"])
   except:
     print("Service call failed")
     exit(-1)
-  return(responseJointPose)
+  return(responseGetJointPose)
 
 @app.route('/')
 def index():
@@ -36,10 +36,8 @@ def setJointAngles():
     srv = SetJointPose()
     srv.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
     srv.joint_value = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
-    #srv.joint_value = [0.0, -0.65, 0.0, 0.0, 0.6, 0.0]
-    #manipulator_set_joint_values = rospy.ServiceProxy('manipulator_set_joint_values', SetJointPose)
-    #responseSetJointPose = manipulator_set_joint_values(srv)
-    print(srv.joint_value)
+    #move_joint  = rospy.ServiceProxy('manipulator_set_joint_values', SetJointPose)
+    #responseSetJointPose = move_joint(srv)
   except:
     print("Service call failed")
     exit(-1)
