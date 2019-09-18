@@ -5,7 +5,7 @@ import rospy # pylint: disable=import-error
 from std_msgs.msg import String # pylint: disable=import-error
 from std_msgs.msg import Int32 # pylint: disable=import-error
 from frystation.msg import JointPose # pylint: disable=import-error
-from frystation.srv import SetJointPose # pylint: disable=import-error
+from frystation.srv import SetJointPoseTest, SetJointPoseTestResponse # pylint: disable=import-error
 from frystation.msg import SyncWriteItem # pylint: disable=import-error
 from robotis_controller_msgs.msg import StatusMsg # pylint: disable=import-error
 
@@ -31,7 +31,7 @@ def handle_manipulator_move(jointPose):
 
 def manipulator_move_server():
 	rospy.init_node('manipulator_move_server')
-	s = rospy.Service('manipulator_set_joint_values', SetJointPose, handle_manipulator_move)
+	s = rospy.Service('manipulator_set_joint_values', SetJointPoseTest, handle_manipulator_move)
 	print("Ready to rumble")
 	rospy.spin()
 
