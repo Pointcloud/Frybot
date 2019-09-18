@@ -44,6 +44,7 @@ add_message_files(
    FILES
    GetJointPose.srv
    SetJointPose.srv
+   SetJointPoseTest.srv
  )
 
 ## Generate actions in the 'action' folder
