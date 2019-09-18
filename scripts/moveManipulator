@@ -15,7 +15,7 @@ from robotis_controller_msgs.msg import StatusMsg # pylint: disable=import-error
 # 	if data.status_msg == "End Trajectory":
 # 		MANIPULATOR_MOVING = False
 
-def handle_manipulator_move(jointPose):
+def handle_manipulator_move(jointposemsg):
 	# print("Starting manipulator joint move")
 	# global MANIPULATOR_MOVING
 	# MANIPULATOR_MOVING = True
