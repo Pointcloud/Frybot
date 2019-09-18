@@ -10,24 +10,23 @@ from frystation.srv import SetJointPoseTest, SetJointPoseTestResponse # pylint: 
 from frystation.srv import SetJointPose, SetJointPoseResponse # pylint: disable=import-error
 from robotis_controller_msgs.msg import StatusMsg # pylint: disable=import-error
 
-# def manipulator_status_callback(data):
-# 	global MANIPULATOR_MOVING
-# 	if data.status_msg == "End Trajectory":
-# 		MANIPULATOR_MOVING = False
+def manipulator_status_callback(data):
+	global MANIPULATOR_MOVING
+	if data.status_msg == "End Trajectory":
+		MANIPULATOR_MOVING = False
 
 def handle_manipulator_move(jointposemsg):
-	# print("Starting manipulator joint move")
-	# global MANIPULATOR_MOVING
-	# MANIPULATOR_MOVING = True
-	# msg = JointPose()
-	# msg.name = SetJointPose.joint_name
-	# msg.value = SetJointPose.joint_value
-	# pubManipulator.publish(msg)
-	# mustend = time.time() + 10
-	# while time.time() < mustend:
-	# 	if not MANIPULATOR_MOVING: break
-	# 	time.sleep(.1)
-	print("In the moveManipulator callback")
+	print("Starting manipulator joint move")
+	global MANIPULATOR_MOVING
+	MANIPULATOR_MOVING = True
+	msg = JointPose()
+	msg.name = SetJointPose.joint_name
+	msg.value = SetJointPose.joint_value
+	pubManipulator.publish(msg)
+	mustend = time.time() + 10
+	while time.time() < mustend:
+		if not MANIPULATOR_MOVING: break
+		time.sleep(.1)
 	return True 
 
 def manipulator_move_server():
@@ -38,12 +37,12 @@ def manipulator_move_server():
 
 if __name__ == "__main__":
 	#create global variable to identify whether the manipulator is currently moving
-	#MANIPULATOR_MOVING = False
+	MANIPULATOR_MOVING = False
 
 	#setup publisher to send manipulator joint commands
-	#pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
+	pubManipulator = rospy.Publisher('/robotis/base/joint_pose_msg',JointPose, queue_size=1)
 
 	#setup a subscriber to recieve notifications about manipulator status, allow 2 seconds for subscriber to register
-	#rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
-	#time.sleep(1) 
+	rospy.Subscriber("/robotis/status", StatusMsg, manipulator_status_callback)
+	time.sleep(1) 
 	manipulator_move_server()
