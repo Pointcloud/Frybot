@@ -37,7 +37,7 @@ def setJointAngles():
     #srv = SetJointPose()
     joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
     #srv.joint_value = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
-    joint_value = ['0.0', '0.0', '0.0', '0.0', '0.0', '0.0']
+    joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     move_joint  = rospy.ServiceProxy('manipulator_set_joint_values', SetJointPose)
     responseSetJointPose = move_joint(joint_name, joint_value)
   except (rospy.ServiceException, rospy.ROSException), e:
