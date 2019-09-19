@@ -21,7 +21,8 @@ def handle_manipulator_move(joints):
 	MANIPULATOR_MOVING = True
 	msg = JointPose()
 	msg.name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-	msg.value = [0.0, -0.65, 0.0532, 0.0, 0.69, 0.0]
+	msg.value = [joints.joint_value['joint1'], joints.joint_value['joint2'], joints.joint_value['joint3'], joints.joint_value['joint4'], joints.joint_value['joint5'], joints.joint_value['joint6']]
+	#msg.value = [0.0, -0.65, 0.0532, 0.0, 0.69, 0.0]
 	pubManipulator.publish(msg)
 	mustend = time.time() + 10
 	while time.time() < mustend:
