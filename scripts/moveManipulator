@@ -27,6 +27,7 @@ def handle_manipulator_move(joints):
 	while time.time() < mustend:
 		if not MANIPULATOR_MOVING: break
 		time.sleep(.1)
+	print("manipulator joint move complete")
 	return True 
 
 def manipulator_move_server():

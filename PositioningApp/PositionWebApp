@@ -29,6 +29,11 @@ def index():
     jointPose = get_joint_pose()
     return render_template('index.html', jointPose=jointPose)
 
+@app.route('/newSlider')
+def index():
+    jointPose = get_joint_pose()
+    return render_template('newSlider.html', jointPose=jointPose)
+
 @app.route('/setJointAngles', methods=['POST'])
 def setJointAngles():
   rospy.wait_for_service('/manipulator_set_joint_values')
