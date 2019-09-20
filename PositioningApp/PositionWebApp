@@ -31,7 +31,7 @@ def index():
 
 @app.route('/setJointAngles', methods=['POST'])
 def setJointAngles():
-  rospy.wait_for_service('/manipulator_set_joint_values')
+  rospy.wait_for_service('/frystation/manipulator_set_joint_values')
   try:
     updatedJointPose = request.get_json()
     joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
@@ -43,6 +43,20 @@ def setJointAngles():
     #print("Service call failed")
     exit(-1)
   return("manipulator joint update complete")
+
+@app.route('/setGripperPosition', methods=['POST'])
+def setGripperPosition():
+  rospy.wait_for_service('/frystation/gripper_set_position')
+  try:
+    updatedGripperPosition = request.get_json()
+    gripper_position = [updatedGripperPosition['gripper']]
+    move_gripper  = rospy.ServiceProxy('/frystation/gripper_set_position', Int32)
+    responseSetJointPose = move_gripper(gripper_position)
+  except (rospy.ServiceException, rospy.ROSException), e:
+    rospy.logerr("Service call failed: %s" % (e,))
+    #print("Service call failed")
+    exit(-1)
+  return("gripper position update complete")
 
 if __name__ == '__main__':
     		 
