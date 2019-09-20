@@ -7,14 +7,14 @@ from frystation.msg import SyncWriteItem # pylint: disable=import-error
 from robotis_controller_msgs.msg import StatusMsg # pylint: disable=import-error
 
 def gripper_enable_torque(enabled):
-    msg = SyncWriteItem()
+	msg = SyncWriteItem()
 	msg.item_name = "torque_enable"
 	msg.joint_name = ["gripper"]
 	msg.value =[enabled]
 	pubGripperControl.publish(msg)
 
 def handle_gripper_set_position(position):
-    msg = SyncWriteItem()
+	msg = SyncWriteItem()
 	msg.item_name = "goal_position"
 	msg.joint_name = ["gripper"]
 	msg.value =[position]
