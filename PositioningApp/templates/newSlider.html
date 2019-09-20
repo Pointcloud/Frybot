@@ -76,9 +76,30 @@
         <output></output>
     </div>
 
-    <script src="//localhost:8081"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.min.js"></script>
+    <script>
+        function setJointAngles() {
+            // POST
+            fetch('/setJointAngles', {
+            method: 'POST',
+            cache: "no-cache",
+            headers: new Headers({"content-type": "application/json"}),
+            body: JSON.stringify({
+                "joint1": (document.getElementById('slider1').value)/57.296,
+                "joint2": (document.getElementById('slider2').value)/57.296,
+                "joint3": (document.getElementById('slider3').value)/57.296,
+                "joint4": (document.getElementById('slider4').value)/57.296,
+                "joint5": (document.getElementById('slider5').value)/57.296,
+                "joint6": (document.getElementById('slider6').value)/57.296
+            })
+            }).then(function (response) { 
+            return response.text();
+            }).then(function (text) {
+            console.log(text);
+            });
+        }
+    </script>
     <script>
     $(function() {
         var $document = $(document);
@@ -86,27 +107,7 @@
         var $element = $(selector);
         // For ie8 support
         var textContent = ('textContent' in document) ? 'textContent' : 'innerText';
-        //move the manipulator when a joint value changes
-        function setJointAngles() {
-          // POST
-          fetch('/setJointAngles', {
-            method: 'POST',
-            cache: "no-cache",
-            headers: new Headers({"content-type": "application/json"}),
-            body: JSON.stringify({
-              "joint1": (document.getElementById('slider1').value)/57.296,
-              "joint2": (document.getElementById('slider2').value)/57.296,
-              "joint3": (document.getElementById('slider3').value)/57.296,
-              "joint4": (document.getElementById('slider4').value)/57.296,
-              "joint5": (document.getElementById('slider5').value)/57.296,
-              "joint6": (document.getElementById('slider6').value)/57.296
-            })
-          }).then(function (response) { 
-          return response.text();
-          }).then(function (text) {
-          console.log(text);
-          });
-        }
+
         // Example functionality to demonstrate a value feedback
         function valueOutput(element) {
             var value = element.value;
@@ -134,8 +135,7 @@
             $inputRange.rangeslider('update', true);
         });
         // Example functionality to test initialisation on hidden elements
-        $document
-            .on('click', '#js-example-hidden button[data-behaviour="toggle"]', function(e) {
+        $document.on('click', '#js-example-hidden button[data-behaviour="toggle"]', function(e) {
                 var $container = $(e.target.previousElementSibling);
                 $container.toggle();
             });
