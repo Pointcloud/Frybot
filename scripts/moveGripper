@@ -39,4 +39,4 @@ if __name__ == "__main__":
 	gripper_enable_torque(True)
 	time.sleep(1) 
 
-	gripper_move_server()
+	gripper_move_server() 
