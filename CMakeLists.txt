@@ -12,13 +12,13 @@ project(frystation)
 ################################################################################
 find_package(catkin REQUIRED COMPONENTS
   std_msgs
+  sensor_msgs
   geometry_msgs
   message_generation
   rospy
   robotis_controller_msgs
   manipulator_h_base_module_msgs
   roscpp
-  sensor_msgs
   open_manipulator_msgs
 )
 
@@ -57,6 +57,7 @@ add_message_files(
 generate_messages(
   DEPENDENCIES
   std_msgs
+  sensor_msgs
   geometry_msgs
 )
 

@@ -9,15 +9,16 @@ from frystation.srv import SetJointPoseTest, SetJointPoseTestResponse # pylint: 
 from frystation.srv import GetJointPose # pylint: disable=import-error
 from std_msgs.msg import String # pylint: disable=import-error
 from std_msgs.msg import Int32 # pylint: disable=import-error
+from sensor_msgs.msg import JointState # pylint: disable=import-error
 from frystation.msg import SyncWriteItem # pylint: disable=import-error
 
 app = Flask(__name__)
 
 def get_joint_pose():
   #determine the current joint positions
-  rospy.wait_for_service('/robotis/base/get_joint_pose')
+  rospy.wait_for_service('/open_manipulator/joint_states')
   try:
-    get_position = rospy.ServiceProxy('/robotis/base/get_joint_pose', GetJointPose)
+    get_position = rospy.ServiceProxy('/open_manipulator/joint_states', JointState)
     responseGetJointPose = get_position(["joint1", "joint2", "joint3","joint4","joint5","joint6"])
   except:
     print("Service call failed")
