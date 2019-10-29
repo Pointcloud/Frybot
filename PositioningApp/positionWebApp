@@ -16,9 +16,9 @@ app = Flask(__name__)
 
 def get_joint_pose():
   #determine the current joint positions
-  rospy.wait_for_service('/open_manipulator/joint_states')
+  rospy.wait_for_service('/frystation/manipulator_get_joint_values')
   try:
-    get_position = rospy.ServiceProxy('/open_manipulator/joint_states', JointState)
+    get_position = rospy.ServiceProxy('/frystation/get_joint_values', GetJointPose)
     responseGetJointPose = get_position(["joint1", "joint2", "joint3","joint4","joint5","joint6"])
   except:
     print("Service call failed")
