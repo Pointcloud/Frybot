@@ -18,14 +18,12 @@ def joint_state_service_callback(joints):
 	return response
 
 def manipulator_joint_position_service():
-	rospy.init_node('joint_state_server')
+	rospy.init_node('joint_position_server')
 	s = rospy.Service('get_joint_values', GetJointPose, joint_state_service_callback)
 	print("Ready to recieve manipulator joint state requests")
 	rospy.spin()
 
 if __name__ == "__main__":
-	global MANIPULATOR_JOINT_STATES = JointState()
-
 	#setup a subscriber to get joint states, allow 1 second for subscriber to register
 	rospy.Subscriber("/open_manipulator/joint_states", JointState, joint_states_topic_callback)
 	time.sleep(1) 
