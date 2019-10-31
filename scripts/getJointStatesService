@@ -6,6 +6,9 @@ from sensor_msgs.msg import JointState # pylint: disable=import-error
 from frystation.srv import GetJointPose # pylint: disable=import-error
 
 global MANIPULATOR_JOINT_STATES
+MANIPULATOR_JOINT_STATES = JointState()
+MANIPULATOR_JOINT_STATES.name =  ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
+MANIPULATOR_JOINT_STATES.position =  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 def joint_states_topic_callback(data):
 	print("starting the joint state topic callback")
@@ -23,7 +26,9 @@ def joint_state_service_callback(joints):
 	response = GetJointPose()
 	print("joint state service callback - checkpoint 3")
 	response.joint_name = MANIPULATOR_JOINT_STATES.name
+	print("joint state service callback - checkpoint 4")
 	response.joint_value = MANIPULATOR_JOINT_STATES.position 
+	print("joint state service callback - checkpoint 5")
 	return response
 
 def manipulator_joint_position_service():
@@ -34,8 +39,7 @@ def manipulator_joint_position_service():
 
 if __name__ == "__main__":
 
-	
 	#setup a subscriber to get joint states, allow 1 second for subscriber to register
 	rospy.Subscriber("/open_manipulator/joint_states", JointState, joint_states_topic_callback)
-	time.sleep(1) 
+	time.sleep(2) 
 	manipulator_joint_position_service()
