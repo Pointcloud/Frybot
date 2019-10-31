@@ -19,16 +19,10 @@ def joint_states_topic_callback(data):
 	print("ending the joint state topic callback")
 
 def joint_state_service_callback(joints):
-	print("joint state service callback - checkpoint 1")
-	global MANIPULATOR_JOINT_STATES
-	MANIPULATOR_JOINT_STATES = JointState()
-	print("joint state service callback - checkpoint 2")
 	response = GetJointPose()
-	print("joint state service callback - checkpoint 3")
 	response.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-	print("joint state service callback - checkpoint 4")
 	response.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-	print("joint state service callback - checkpoint 5")
+	print response
 	return response
 
 def manipulator_joint_position_service():
