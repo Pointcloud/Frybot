@@ -4,7 +4,6 @@ import time
 import rospy # pylint: disable=import-error
 from sensor_msgs.msg import JointState # pylint: disable=import-error
 from frystation.srv import GetJointPose # pylint: disable=import-error
-from std_msgs.msg import String # pylint: disable=import-error
 
 global MANIPULATOR_JOINT_STATES
 MANIPULATOR_JOINT_STATES = JointState()
@@ -25,11 +24,11 @@ def joint_state_service_callback(joints):
 	joints.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	print joints.joint_name 
 	print joints.joint_value
-	return "hello"
+	return joints
 
 def manipulator_joint_position_service():
 	rospy.init_node('joint_position_server')
-	s = rospy.Service('get_joint_values', String, joint_state_service_callback)
+	s = rospy.Service('get_joint_values', GetJointPose, joint_state_service_callback)
 	print("Ready to recieve manipulator joint state requests")
 	rospy.spin()
 
