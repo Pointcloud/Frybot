@@ -25,9 +25,9 @@ def joint_state_service_callback(joints):
 	print("joint state service callback - checkpoint 2")
 	response = GetJointPose()
 	print("joint state service callback - checkpoint 3")
-	response.joint_name = MANIPULATOR_JOINT_STATES.name
+	response.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
 	print("joint state service callback - checkpoint 4")
-	response.joint_value = MANIPULATOR_JOINT_STATES.position 
+	response.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	print("joint state service callback - checkpoint 5")
 	return response
 
