@@ -2,6 +2,6 @@
     <include file="$(find open_manipulator_pro_controller)/launch/open_manipulator_pro_controller.launch">
         <arg name="with_gripper" value="true" />    
     </include>
-    <node name="moveManipulator" pkg="frystation" type="getJointStatesService" />
+    <node name="getJointStatesService" pkg="frystation" type="getJointStatesService" />
     <node name="positionWebApp" pkg="frystation" type="positionWebApp" />
 </launch> 
