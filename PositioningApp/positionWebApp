@@ -11,6 +11,7 @@ from std_msgs.msg import String # pylint: disable=import-error
 from std_msgs.msg import Int32 # pylint: disable=import-error
 from sensor_msgs.msg import JointState # pylint: disable=import-error
 from frystation.msg import SyncWriteItem # pylint: disable=import-error
+from open_manipulator_pro.msg import SetJointPosition # pylint: disable=import-error
 
 app = Flask(__name__)
 
@@ -34,13 +35,15 @@ def index():
 
 @app.route('/setJointAngles', methods=['POST'])
 def setJointAngles():
-  rospy.wait_for_service('/frystation/manipulator_set_joint_values')
+  rospy.wait_for_service('/open_manipulator_pro/goal_joint_space_path')
   try:
     updatedJointPose = request.get_json()
-    joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-    joint_value = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
-    move_joint  = rospy.ServiceProxy('manipulator_set_joint_values', SetJointPose)
-    responseSetJointPose = move_joint(joint_name, joint_value)
+    srv = SetJointPosition()
+    srv.request.joint_position.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
+    srv.request.joint_position.position = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
+    srv.request.path_time = .5
+    move_joint  = rospy.ServiceProxy('/open_manipulator_pro/goal_joint_space_path', SetJointPosition)
+    responseSetJointPose = move_joint(srv)
   except (rospy.ServiceException, rospy.ROSException), e:
     rospy.logerr("Service call failed: %s" % (e,))
     #print("Service call failed")
