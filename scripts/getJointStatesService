@@ -19,6 +19,8 @@ def joint_state_service_callback(request):
 	global MANIPULATOR_JOINT_STATES
 	MANIPULATOR_JOINT_STATES = JointState()
 	print("returning the joint positions")
+	print(MANIPULATOR_JOINT_STATES.name)
+	print(MANIPULATOR_JOINT_STATES.position)
 	return(MANIPULATOR_JOINT_STATES.name, MANIPULATOR_JOINT_STATES.position)
 	#response = GetJointPose()
 	# response.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
