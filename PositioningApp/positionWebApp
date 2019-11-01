@@ -22,8 +22,8 @@ def get_joint_pose():
     request = GetJointPose()
     request = ["joint1", "joint2", "joint3","joint4","joint5","joint6"]
     responseGetJointPose = get_position(request)
-  except:
-    print("Service call failed")
+  except (rospy.ServiceException, rospy.ROSException), e:
+    rospy.logerr("Service call failed: %s" % (e,))
     exit(-1)
   return(responseGetJointPose)
 

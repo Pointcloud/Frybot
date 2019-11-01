@@ -18,13 +18,13 @@ def joint_states_topic_callback(data):
 	MANIPULATOR_JOINT_STATES.position =  data.position
 	print("ending the joint state topic callback")
 
-def joint_state_service_callback(joints):
+def joint_state_service_callback(request):
 	response = GetJointPose()
-	joints.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-	joints.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-	print joints.joint_name 
-	print joints.joint_value
-	return joints
+	response.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
+	response.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+	print(response.joint_name)
+	print(response.joint_value)
+	return(response.joint_name,response.joint_value)
 
 def manipulator_joint_position_service():
 	rospy.init_node('joint_position_server')
