@@ -16,14 +16,12 @@ def joint_states_topic_callback(data):
 	MANIPULATOR_JOINT_STATES = JointState()
 	MANIPULATOR_JOINT_STATES.name =  data.name
 	MANIPULATOR_JOINT_STATES.position =  data.position
-	print("ending the joint state topic callback")
+
 
 def joint_state_service_callback(request):
 	response = GetJointPose()
 	response.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
 	response.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-	print(response.joint_name)
-	print(response.joint_value)
 	return(response.joint_name,response.joint_value)
 
 def manipulator_joint_position_service():
@@ -35,6 +33,6 @@ def manipulator_joint_position_service():
 if __name__ == "__main__":
 
 	#setup a subscriber to get joint states, allow 1 second for subscriber to register
-	rospy.Subscriber("/open_manipulator/joint_states", JointState, joint_states_topic_callback)
+	rospy.Subscriber("/open_manipulator_pro/joint_states", JointState, joint_states_topic_callback)
 	time.sleep(2) 
 	manipulator_joint_position_service()
