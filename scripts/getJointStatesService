@@ -14,18 +14,10 @@ def joint_states_topic_callback(data):
 	MANIPULATOR_JOINT_STATES.name =  data.name
 	MANIPULATOR_JOINT_STATES.position =  data.position
 
-
 def joint_state_service_callback(request):
 	global MANIPULATOR_JOINT_STATES
 	MANIPULATOR_JOINT_STATES = JointState()
-	print("returning the joint positions")
-	print(MANIPULATOR_JOINT_STATES.name)
-	print(MANIPULATOR_JOINT_STATES.position)
 	return(MANIPULATOR_JOINT_STATES.name, MANIPULATOR_JOINT_STATES.position)
-	#response = GetJointPose()
-	# response.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-	# response.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-	# return(response.joint_name,response.joint_value)
 
 def manipulator_joint_position_service():
 	rospy.init_node('joint_position_server')
