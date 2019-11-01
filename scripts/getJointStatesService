@@ -7,11 +7,8 @@ from frystation.srv import GetJointPose # pylint: disable=import-error
 
 global MANIPULATOR_JOINT_STATES
 MANIPULATOR_JOINT_STATES = JointState()
-MANIPULATOR_JOINT_STATES.name =  ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-MANIPULATOR_JOINT_STATES.position =  [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 def joint_states_topic_callback(data):
-	print("starting the joint state topic callback")
 	global MANIPULATOR_JOINT_STATES
 	MANIPULATOR_JOINT_STATES = JointState()
 	MANIPULATOR_JOINT_STATES.name =  data.name
@@ -19,10 +16,13 @@ def joint_states_topic_callback(data):
 
 
 def joint_state_service_callback(request):
-	response = GetJointPose()
-	response.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-	response.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-	return(response.joint_name,response.joint_value)
+	global MANIPULATOR_JOINT_STATES
+	MANIPULATOR_JOINT_STATES = JointState()
+	return(MANIPULATOR_JOINT_STATES.name, MANIPULATOR_JOINT_STATES.position)
+	#response = GetJointPose()
+	# response.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
+	# response.joint_value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+	# return(response.joint_name,response.joint_value)
 
 def manipulator_joint_position_service():
 	rospy.init_node('joint_position_server')
