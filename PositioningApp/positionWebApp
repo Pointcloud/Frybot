@@ -11,7 +11,7 @@ from std_msgs.msg import String # pylint: disable=import-error
 from std_msgs.msg import Int32 # pylint: disable=import-error
 from sensor_msgs.msg import JointState # pylint: disable=import-error
 from frystation.msg import SyncWriteItem # pylint: disable=import-error
-from open_manipulator_pro.msg import SetJointPosition # pylint: disable=import-error
+from open_manipulator_msgs.srv import SetJointPosition # pylint: disable=import-error
 
 app = Flask(__name__)
 
