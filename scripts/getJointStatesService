@@ -17,6 +17,8 @@ def joint_states_topic_callback(data):
 def joint_state_service_callback(request):
 	global MANIPULATOR_JOINT_STATES
 	MANIPULATOR_JOINT_STATES = JointState()
+	print("Returning the following Manipulator joint angles: ")
+	print(MANIPULATOR_JOINT_STATES.position)
 	return(MANIPULATOR_JOINT_STATES.name, MANIPULATOR_JOINT_STATES.position)
 
 def manipulator_joint_position_service():
