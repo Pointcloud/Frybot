@@ -45,9 +45,8 @@ def setJointAngles():
     #srv.joint_position.position = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
     planning_group = "group1"
     msgPosition = JointPosition()
-
-    joint_name = "joint1"
-    joint_position = [0.0]
+    joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
+    joint_position = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
     msgPosition.joint_name = joint_name 
     msgPosition.position = joint_position
     path_time = 0.5
