@@ -5,8 +5,6 @@ import rospy # pylint: disable=import-error
 from sensor_msgs.msg import JointState # pylint: disable=import-error
 from frystation.srv import GetJointPose # pylint: disable=import-error
 
-
-
 def joint_states_topic_callback(data):
 	global MANIPULATOR_JOINT_STATES
 	MANIPULATOR_JOINT_STATES.name =  data.name
