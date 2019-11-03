@@ -45,8 +45,11 @@ def setJointAngles():
     #srv.joint_position.position = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
     planning_group = "group1"
     msgPosition = JointPosition()
-    msgPosition.joint_name[0] = "joint1"
-    msgPosition.position[0] = [0.0]
+
+    joint_name = "joint1"
+    joint_position = [0.0]
+    msgPosition.joint_name = joint_name 
+    msgPosition.position = joint_position
     path_time = 0.5
     move_joint  = rospy.ServiceProxy('/open_manipulator_pro/goal_joint_space_path', SetJointPosition)
     _responseSetJointPose = move_joint(planning_group, msgPosition, path_time)
