@@ -38,16 +38,16 @@ def index():
 def setJointAngles():
   rospy.wait_for_service('/open_manipulator_pro/goal_joint_space_path')
   try:
-    updatedJointPose = request.get_json()
-    srv = SetJointPosition()
-    planning_group = "group1"
-    msgPosition = JointPosition()
-    msgPosition.joint_name = "joint1"
+    #updatedJointPose = request.get_json()
+    #srv = SetJointPosition()
     #msgPosition.position = [updatedJointPose['joint1']
-    msgPosition.position = [0.0]
-    path_time = 0.5
     #srv.joint_position.joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
     #srv.joint_position.position = [updatedJointPose['joint1'], updatedJointPose['joint2'], updatedJointPose['joint3'], updatedJointPose['joint4'], updatedJointPose['joint5'], updatedJointPose['joint6']]
+    planning_group = "group1"
+    msgPosition = JointPosition()
+    msgPosition.joint_name[0] = "joint1"
+    msgPosition.position[0] = [0.0]
+    path_time = 0.5
     move_joint  = rospy.ServiceProxy('/open_manipulator_pro/goal_joint_space_path', SetJointPosition)
     _responseSetJointPose = move_joint(planning_group, msgPosition, path_time)
   except (rospy.ServiceException, rospy.ROSException) as e:
