@@ -22,11 +22,9 @@ find_package(catkin REQUIRED COMPONENTS
   open_manipulator_msgs
 )
 
-
 ################################################################################
 # Setup for python modules and scripts
 ################################################################################
-
 
 ################################################
 ## Declare ROS messages, services and actions ##
