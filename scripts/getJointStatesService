@@ -13,6 +13,7 @@ def joint_states_topic_callback(data):
 	MANIPULATOR_JOINT_STATES = JointState()
 	MANIPULATOR_JOINT_STATES.name =  data.name
 	MANIPULATOR_JOINT_STATES.position =  data.position
+	print(MANIPULATOR_JOINT_STATES.position)
 
 def joint_state_service_callback(request):
 	global MANIPULATOR_JOINT_STATES
