@@ -76,7 +76,7 @@
         <output></output>
     </div>
     <div>
-        <input id="slider7" type="range" min="0" max="740" value="{{ (jointPose.joint_value[6]*57.296)|round|int }}" onchange="setGripperPosition()" data-rangeslider>
+        <input id="slider7" type="range" min="0" max="740" value="{{ (jointPose.joint_value[6]*649.69)|round|int }}" onchange="setGripperPosition()" data-rangeslider>
         <output></output>
         </div>
 
@@ -112,7 +112,7 @@
             cache: "no-cache",
             headers: new Headers({"content-type": "application/json"}),
             body: JSON.stringify({
-                "gripper": (document.getElementById('slider7').value)
+                "gripper": (document.getElementById('slider7').value/649.69)
             })
             }).then(function (response) { 
             return response.text();
