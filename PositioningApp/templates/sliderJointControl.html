@@ -52,8 +52,8 @@
 </head>
 <body>
     <div>
-        <input id="slider1" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[0]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
         <output></output>
+        <input id="slider1" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[0]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
     </div>
         <div>
         <input id="slider2" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[1]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
