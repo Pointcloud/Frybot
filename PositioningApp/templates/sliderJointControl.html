@@ -56,29 +56,29 @@
         <input id="slider1" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[0]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
     </div>
         <div>
+        <output></output>
         <input id="slider2" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[1]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
-        <output></output>
     </div>
     <div>
+        <output></output>
         <input id="slider3" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[2]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
-        <output></output>
     </div>
     <div>
+        <output></output>
         <input id="slider4" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[3]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
-        <output></output>
     </div>
     <div>
+        <output></output>
         <input id="slider5" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[4]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
-        <output></output>
     </div>
     <div>
+        <output></output>
         <input id="slider6" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[5]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
-        <output></output>
     </div>
     <div>
-        <input id="slider7" type="range" min="0" max="740" value="{{ (jointPose.joint_value[6]*649.69)|round|int }}" onchange="setGripperPosition()" data-rangeslider>
         <output></output>
-        </div>
+        <input id="slider7" type="range" min="0" max="740" value="{{ (jointPose.joint_value[6]*649.69)|round|int }}" onchange="setGripperPosition()" data-rangeslider>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.min.js"></script>
