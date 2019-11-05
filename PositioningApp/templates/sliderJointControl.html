@@ -52,32 +52,32 @@
 </head>
 <body>
     <div>
-        Joint 1 Position: <output></output>
-        <input id="slider1" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[0]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
+        <output></output>
+        <input id="slider1" name="joint 1" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[0]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
     </div>
         <div>
         <output></output>
-        <input id="slider2" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[1]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
+        <input id="slider2" name="joint 2" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[1]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
     </div>
     <div>
         <output></output>
-        <input id="slider3" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[2]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
+        <input id="slider3" name="joint 3"  type="range" min="-180" max="180" value="{{ (jointPose.joint_value[2]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
     </div>
     <div>
         <output></output>
-        <input id="slider4" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[3]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
+        <input id="slider4" name="joint 4"  type="range" min="-180" max="180" value="{{ (jointPose.joint_value[3]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
     </div>
     <div>
         <output></output>
-        <input id="slider5" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[4]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
+        <input id="slider5" name="joint 5"  type="range" min="-180" max="180" value="{{ (jointPose.joint_value[4]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
     </div>
     <div>
         <output></output>
-        <input id="slider6" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[5]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
+        <input id="slider6" name="joint 6" type="range" min="-180" max="180" value="{{ (jointPose.joint_value[5]*57.296)|round|int }}" onchange="setJointAngles()" data-rangeslider>
     </div>
     <div>
         <output></output>
-        <input id="slider7" type="range" min="0" max="740" value="{{ (jointPose.joint_value[6]*649.69)|round|int }}" onchange="setGripperPosition()" data-rangeslider>
+        <input id="slider7" name="gripper"  type="range" min="0" max="740" value="{{ (jointPose.joint_value[6]*649.69)|round|int }}" onchange="setGripperPosition()" data-rangeslider>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -133,7 +133,7 @@
         function valueOutput(element) {
             var value = element.value;
             var output = element.parentNode.getElementsByTagName('output')[0] || element.parentNode.parentNode.getElementsByTagName('output')[0];
-            output[textContent] = "joint:" + value;
+            output[textContent] = element.name + ":" + value;
         }
         $document.on('input', 'input[type="range"], ' + selector, function(e) {
             valueOutput(e.target);
