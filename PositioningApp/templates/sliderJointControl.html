@@ -133,7 +133,7 @@
         function valueOutput(element) {
             var value = element.value;
             var output = element.parentNode.getElementsByTagName('output')[0] || element.parentNode.parentNode.getElementsByTagName('output')[0];
-            output[textContent] = value;
+            output[textContent] = "joint:" + value;
         }
         $document.on('input', 'input[type="range"], ' + selector, function(e) {
             valueOutput(e.target);
