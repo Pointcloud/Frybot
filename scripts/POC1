@@ -17,9 +17,12 @@ def manipulator_move(joints, speed):
 		msgPosition = JointPosition()
 		msgPosition.joint_name = joint_name 
 		msgPosition.position = joint_position
-		path_time = speed
+		#path_time = 2.0
+		print("checkpoint 1")
 		move_joint  = rospy.ServiceProxy('/open_manipulator_pro/goal_joint_space_path', SetJointPosition)
-		_responseSetJointPose = move_joint(planning_group, msgPosition, path_time)
+		print("checkpoint 2")
+		_responseSetJointPose = move_joint(planning_group, msgPosition, 2.0)
+		print("checkpoint 3")
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
 		print("Call to /open_manipulator_pro/goal_joint_space_path failed")
