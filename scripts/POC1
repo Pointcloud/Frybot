@@ -7,16 +7,19 @@ from open_manipulator_msgs.srv import SetJointPosition # pylint: disable=import-
 from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-error
 
 def manipulator_move(joints, speed):
+	print("starting manipulator_move")
 	rospy.wait_for_service('/open_manipulator_pro/goal_joint_space_path')
 	try:
 		planning_group = "manipulatorGroup"
 		joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
 		joint_position = [joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]]
+		print(joint_position)
 		msgPosition = JointPosition()
 		msgPosition.joint_name = joint_name 
 		msgPosition.position = joint_position
+		path_time = speed
 		move_joint  = rospy.ServiceProxy('/open_manipulator_pro/goal_joint_space_path', SetJointPosition)
-		_responseSetJointPose = move_joint(planning_group, msgPosition, speed)
+		_responseSetJointPose = move_joint(planning_group, msgPosition, path_time)
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
 		print("Call to /open_manipulator_pro/goal_joint_space_path failed")
