@@ -18,11 +18,8 @@ def manipulator_move(joints, speed):
 		msgPosition.joint_name = joint_name 
 		msgPosition.position = joint_position
 		path_time = speed
-		print("checkpoint 1")
 		move_joint  = rospy.ServiceProxy('/open_manipulator_pro/goal_joint_space_path', SetJointPosition)
-		print("checkpoint 2")
 		_responseSetJointPose = move_joint(planning_group, msgPosition, path_time)
-		print("checkpoint 3")
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
 		print("Call to /open_manipulator_pro/goal_joint_space_path failed")
@@ -37,24 +34,14 @@ def make_Fries():
 
 	#move the manipulator to the home position 
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],3)
-	print("move 1 complete")
 	time.sleep(1) 
-
-	#move the last joint
-	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 1.0],1)
-	print("move 2 complete")
-	time.sleep(1) 
-
-	#move the manipulator to the home position 
-	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],1)
-	print("move 3 complete")
 
 	#move the manipulator to the cup approach position 
-	#manipulator_move([3.071765899658203, 1.483525276184082, 2.75760793685913, 0.0, -2.61798357963562, 0.8191601431369782],4)
-	#time.sleep(1) 
+	manipulator_move([3.071765899658203, 1.483525276184082, 2.75760793685913, 0.0, -2.61798357963562, 0.8191601431369782],4)
+	time.sleep(1) 
 
 	#move the manipulator to the cup position 
-	#manipulator_move([3.071765899658203, 1.8151339292526245, 2.0594775676727295, 0.0, -2.4085440635681152, 0.017437780275940895],3)
+	manipulator_move([3.071765899658203, 1.8151339292526245, 2.0594775676727295, 0.0, -2.4085440635681152, 0.017437780275940895],3)
 
 	#gripper position for cup grasp is .970947260260582
 	time.sleep(1) 
