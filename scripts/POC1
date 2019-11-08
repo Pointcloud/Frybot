@@ -24,19 +24,22 @@ def manipulator_move(joints, speed):
 	return("manipulator joint update complete")
 
 def make_Fries():
-
+	print("starting make_Fries")
 	################################################################
 	######################### Make Frys ############################
 	################################################################
 
 	#move the manipulator to the home position 
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],3)
+	print("move 1 complete")
 
 	#move the last joint
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 1.0],1)
+	print("move 2 complete")
 
 	#move the manipulator to the home position 
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],1)
+	print("move 3 complete")
 
 	#move the manipulator to the cup approach position 
 	#manipulator_move([3.071765899658203, 1.483525276184082, 2.75760793685913, 0.0, -2.61798357963562, 0.8191601431369782],4)
