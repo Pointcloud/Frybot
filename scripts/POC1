@@ -34,19 +34,19 @@ def make_Fries():
 
 	#move the manipulator to the home position 
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],3)
-	time.sleep(2) 
+	time.sleep(5) 
 
 	#move the manipulator to the cup approach position 
 	manipulator_move([3.071765899658203, 1.483525276184082, 2.75760793685913, 0.0, -2.61798357963562, 0.8191601431369782],4)
-	time.sleep(2) 
+	time.sleep(5) 
 
 	#move the manipulator to the cup position 
 	manipulator_move([3.071765899658203, 1.8151339292526245, 2.0594775676727295, 0.0, -2.4085440635681152, 0.017437780275940895],3)
-	time.sleep(2) 
+	time.sleep(5) 
 
 	#move the manipulator to the home position 
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],3)
-	time.sleep(2) 
+	time.sleep(5) 
 
 	#gripper position for cup grasp is .970947260260582
 	time.sleep(1) 
