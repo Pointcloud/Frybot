@@ -38,10 +38,12 @@ def make_Fries():
 	#move the manipulator to the home position 
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],3)
 	print("move 1 complete")
+	time.sleep(1) 
 
 	#move the last joint
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 1.0],1)
 	print("move 2 complete")
+	time.sleep(1) 
 
 	#move the manipulator to the home position 
 	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],1)
