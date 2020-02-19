@@ -3,7 +3,7 @@
 import rospy # pylint: disable=import-error
 import time
 from open_manipulator_msgs.srv import SetJointPosition # pylint: disable=import-error
-from open_manipulator_msgs.msg import SetActuatorState # pylint: disable=import-error
+from open_manipulator_msgs.srv import SetActuatorState # pylint: disable=import-error
 from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-error
 
 ######################### MANIPULATOR POSITIONS ###########################
