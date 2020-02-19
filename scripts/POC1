@@ -3,6 +3,7 @@
 import rospy # pylint: disable=import-error
 import time
 from open_manipulator_msgs.srv import SetJointPosition # pylint: disable=import-error
+from open_manipulator_msgs.msg import SetActuatorState # pylint: disable=import-error
 from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-error
 
 ######################### MANIPULATOR POSITIONS ###########################
@@ -12,6 +13,19 @@ GRIPPER_OPEN = [740]
 GRIPPER_CLOSED = [0]
 GRIPPER_CUP_GRASP = []
 ###########################################################################
+def manipulator_enable(enabled):
+	print("starting manipulator_enable")
+	rospy.wait_for_service('/open_manipulator_pro/set_actuator_state')
+	try:
+		set_actuator_state = enabled
+		joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
+		enable_manipulator  = rospy.ServiceProxy('/open_manipulator_pro/goal_tool_control', SetActuatorState.srv)
+		_response_enable_manipulator = enable_manipulator(joint_name, set_actuator_state)
+	except (rospy.ServiceException, rospy.ROSException) as e:
+		rospy.logerr("Service call failed: %s" % (e,))
+		#print("Service call failed")
+	exit(-1)
+	return("gripper enable update complete")
 
 def manipulator_move(joints, speed):
 	print("starting manipulator_move")
@@ -58,10 +72,14 @@ def make_Fries():
 	################################################################
 	
 	#################### Open Door ####################
+	
+	#enable joints
+	manipulator_enable(True)
+	time.sleep(1) 
 
 	#open gripper
-	#setGripperPosition(GRIPPER_OPEN)
-	#time.sleep(1) 
+	setGripperPosition(GRIPPER_OPEN)
+	time.sleep(1) 
 
 	#reset by moving manipulator to the home position
 	manipulator_move(MANIPULATOR_HOME,4)
@@ -74,6 +92,10 @@ def make_Fries():
 	#move the manipulator to the home position 
 	manipulator_move(MANIPULATOR_HOME,3)
 	time.sleep(3) 
+
+	#disable joints
+	manipulator_enable(False)
+	time.sleep(1) 
 
 if __name__=='__main__':
 	try:
