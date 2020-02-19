@@ -19,7 +19,7 @@ def manipulator_enable(enabled):
 	try:
 		set_actuator_state = enabled
 		joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
-		enable_manipulator  = rospy.ServiceProxy('/open_manipulator_pro/goal_tool_control', SetActuatorState.srv)
+		enable_manipulator  = rospy.ServiceProxy('/open_manipulator_pro/goal_tool_control', SetActuatorState)
 		_response_enable_manipulator = enable_manipulator(joint_name, set_actuator_state)
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
