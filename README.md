@@ -1,4 +1,4 @@
-#frystation
+#frybot
 
 A robotic cell that will automate all the processes from ordering (via app) to delivery of french fries
 
