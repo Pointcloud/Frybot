@@ -1,10 +1,17 @@
 #!/usr/bin/env python
-#This is the proof of concept applicaton with the instructions to make fries
 
 import rospy # pylint: disable=import-error
 import time
 from open_manipulator_msgs.srv import SetJointPosition # pylint: disable=import-error
 from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-error
+
+######################### MANIPULATOR POSITIONS ###########################
+MANIPULATOR_HOME = [0.0,-0.7853,0.3926,0.0, 0.3926, 0.0]
+DOOR_OPEN_APPROACH = [-1.6505,-0.9990,2.3099,-0.0499,3.1415,-0.24863]
+GRIPPER_OPEN = [740]
+GRIPPER_CLOSED = [0]
+GRIPPER_CUP_GRASP = []
+###########################################################################
 
 def manipulator_move(joints, speed):
 	print("starting manipulator_move")
@@ -26,26 +33,47 @@ def manipulator_move(joints, speed):
 		exit(-1)
 	return("manipulator joint update complete")
 
+def setGripperPosition(gripperPosition):
+	rospy.wait_for_service('/open_manipulator_pro/goal_tool_control')
+	try:
+		planning_group = "gripperGroup"
+		msgGripperPosition = JointPosition()
+		joint_name = ["gripper"]
+		joint_position = gripperPosition
+		msgGripperPosition.joint_name = joint_name 
+		msgGripperPosition.position = joint_position
+		path_time = 0.5
+		move_gripper  = rospy.ServiceProxy('/open_manipulator_pro/goal_tool_control', SetJointPosition)
+		_responseSetGripperPose = move_gripper(planning_group, msgGripperPosition, path_time)
+	except (rospy.ServiceException, rospy.ROSException) as e:
+		rospy.logerr("Service call failed: %s" % (e,))
+		#print("Service call failed")
+	exit(-1)
+	return("gripper position update complete")
+
 def make_Fries():
 	print("starting make_Fries")
 	################################################################
-	######################### Make Frys ############################
+	######################### Make Fries ###########################
 	################################################################
+	
+	#################### Open Door ####################
 
-	#move the manipulator to the cup approach position 
-	manipulator_move([3.071765899658203, 1.483525276184082, 2.75760793685913, 0.0, -2.61798357963562, 0.8191601431369782],4)
-	time.sleep(5) 
+	#open gripper
+	#setGripperPosition(GRIPPER_OPEN)
+	#time.sleep(1) 
 
-	#move the manipulator to the cup position 
-	manipulator_move([3.071765899658203, 1.8151339292526245, 2.0594775676727295, 0.0, -2.4085440635681152, 0.017437780275940895],3)
-	time.sleep(5) 
+	#reset by moving manipulator to the home position
+	manipulator_move(MANIPULATOR_HOME,4)
+	time.sleep(3) 
+
+	#move the manipulator to the container home position 
+	manipulator_move(DOOR_OPEN_APPROACH,3)
+	time.sleep(3) 
 
 	#move the manipulator to the home position 
-	manipulator_move([0.0, -0.785, 0.39269, 0.0, 0.39269, 0.0],3)
-	time.sleep(5) 
-
-	#gripper position for cup grasp is .9709472602605820
-	time.sleep(1) 
+	manipulator_move(MANIPULATOR_HOME,3)
+	time.sleep(3) 
 
 if __name__=='__main__':
 	try:
