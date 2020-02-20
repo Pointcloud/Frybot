@@ -49,26 +49,16 @@ def manipulator_move(joints, speed):
 def setGripperPosition(gripperPosition):
 	print("starting set gripper position")
 	rospy.wait_for_service('/open_manipulator_pro/goal_tool_control')
-	print("step 1")
 	try:
 		planning_group = "gripperGroup"
-		print("step 2")
 		msgGripperPosition = JointPosition()
-		print("step 3")
 		joint_name = ["gripper"]
-		print("step 4")
 		joint_position = gripperPosition
-		print("step 5")
 		msgGripperPosition.joint_name = joint_name 
-		print("step 6")
 		msgGripperPosition.position = joint_position
-		print("step 7")
 		path_time = 0.5
-		print("step 8")
 		move_gripper  = rospy.ServiceProxy('/open_manipulator_pro/goal_tool_control', SetJointPosition)
-		print("step 9")
 		_responseSetGripperPose = move_gripper(planning_group, msgGripperPosition, path_time)
-		print("step 10")
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
 		print("gripper position Service call failed")
@@ -84,28 +74,28 @@ def make_Fries():
 	#################### Open Door ####################
 	
 	#enable joints
-	manipulator_enable(True)
-	time.sleep(1) 
+	#manipulator_enable(True)
+	#time.sleep(1) 
 
 	#open gripper
-	setGripperPosition(GRIPPER_OPEN)
-	time.sleep(1) 
+	#setGripperPosition(GRIPPER_OPEN)
+	#time.sleep(1) 
 
 	#reset by moving manipulator to the home position
-	manipulator_move(MANIPULATOR_HOME,4)
-	time.sleep(3) 
+	#manipulator_move(MANIPULATOR_HOME,4)
+	#time.sleep(3) 
 
 	#move the manipulator to the container home position 
 	manipulator_move(DOOR_OPEN_APPROACH,3)
 	time.sleep(3) 
 
 	#move the manipulator to the home position 
-	manipulator_move(MANIPULATOR_HOME,3)
-	time.sleep(3) 
+	#manipulator_move(MANIPULATOR_HOME,3)
+	#time.sleep(3) 
 
 	#disable joints
-	manipulator_enable(False)
-	time.sleep(1) 
+	#manipulator_enable(False)
+	#time.sleep(1) 
 
 if __name__=='__main__':
 	try:
