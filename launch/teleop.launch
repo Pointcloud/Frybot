@@ -1,5 +1,5 @@
 <launch>
-    <include file="$(find open_manipulator_p_teleop)/launch/open_manipulator_pro_teleop_keyboard.launch">
+    <include file="$(find open_manipulator_pro_teleop)/launch/open_manipulator_pro_teleop_keyboard.launch">
         <arg name="with_gripper" value="true" />    
     </include>
 </launch> 
