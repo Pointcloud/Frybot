@@ -53,7 +53,8 @@ def setGripperPosition(gripperPosition):
 		planning_group = "gripperGroup"
 		msgGripperPosition = JointPosition()
 		joint_name = ["gripper"]
-		joint_position = gripperPosition/649.69
+		#joint_position = gripperPosition/649.69
+		joint_position = [float(gripperPosition/649.69)]
 		msgGripperPosition.joint_name = joint_name 
 		msgGripperPosition.position = joint_position
 		path_time = 0.5
