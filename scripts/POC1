@@ -53,6 +53,7 @@ def manipulator_move(joints, speed):
 	return("manipulator joint update complete")
 
 def setGripperPosition(gripperPosition):
+	print("starting set gripper positioh")
 	rospy.wait_for_service('/open_manipulator_pro/goal_tool_control')
 	try:
 		planning_group = "gripperGroup"
@@ -66,7 +67,7 @@ def setGripperPosition(gripperPosition):
 		_responseSetGripperPose = move_gripper(planning_group, msgGripperPosition, path_time)
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
-		#print("Service call failed")
+		print("gripper position Service call failed")
 	exit(-1)
 	return("gripper position update complete")
 
