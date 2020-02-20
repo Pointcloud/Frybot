@@ -78,8 +78,8 @@ def make_Fries():
 	time.sleep(1) 
 
 	#open gripper
-	setGripperPosition(GRIPPER_OPEN)
-	time.sleep(1) 
+	#setGripperPosition(GRIPPER_OPEN)
+	#time.sleep(1) 
 
 	#reset by moving manipulator to the home position
 	manipulator_move(MANIPULATOR_HOME,4)
