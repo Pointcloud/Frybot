@@ -16,20 +16,14 @@ GRIPPER_CUP_GRASP = []
 def manipulator_enable(enabled):
 	print("starting manipulator_enable")
 	rospy.wait_for_service('/open_manipulator_pro/set_actuator_state')
-	print("step 1")
 	try:
 		set_actuator_state = enabled
-		print("step 2")
 		enable_manipulator  = rospy.ServiceProxy('/open_manipulator_pro/set_actuator_state', SetActuatorState)
-		print("step 3")
 		_response_enable_manipulator = enable_manipulator(set_actuator_state)
-		print("step 4")
 	except (rospy.ServiceException, rospy.ROSException) as e:
-		print("step 5")
 		rospy.logerr("Service call failed: %s" % (e,))
 		print("manipulator_enable Service call failed")
 		exit(-1)
-	print("step 6")
 	return("manipulator enable update complete")
 
 def manipulator_move(joints, speed):
@@ -53,7 +47,7 @@ def manipulator_move(joints, speed):
 	return("manipulator joint update complete")
 
 def setGripperPosition(gripperPosition):
-	print("starting set gripper positioh")
+	print("starting set gripper position")
 	rospy.wait_for_service('/open_manipulator_pro/goal_tool_control')
 	try:
 		planning_group = "gripperGroup"
@@ -84,8 +78,8 @@ def make_Fries():
 	time.sleep(1) 
 
 	#open gripper
-	setGripperPosition(GRIPPER_OPEN)
-	time.sleep(1) 
+	#setGripperPosition(GRIPPER_OPEN)
+	#time.sleep(1) 
 
 	#reset by moving manipulator to the home position
 	manipulator_move(MANIPULATOR_HOME,4)
