@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find open_manipulator_p_control_gui)/launch/open_manipulator_p_control_gui.launch">
+        <arg name="with_gripper" value="true" />    
+    </include>
+</launch> 
