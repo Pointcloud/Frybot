@@ -75,11 +75,11 @@ def make_Fries():
 	
 	#enable joints
 	manipulator_enable(True)
-	time.sleep(3) 
+	time.sleep(1) 
 
 	#open gripper
 	setGripperPosition(GRIPPER_OPEN)
-	time.sleep(3) 
+	time.sleep(1) 
 
 	#reset by moving manipulator to the home position
 	#manipulator_move(MANIPULATOR_HOME,4)
@@ -95,7 +95,7 @@ def make_Fries():
 
 	#close gripper
 	setGripperPosition(GRIPPER_CLOSED)
-	time.sleep(3) 
+	time.sleep(1) 
 
 	#disable joints
 	manipulator_enable(False)
