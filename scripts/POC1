@@ -9,8 +9,8 @@ from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-err
 ######################### MANIPULATOR POSITIONS ###########################
 MANIPULATOR_HOME = [0.0,-0.7853,0.3926,0.0, 0.3926, 0.0]
 DOOR_OPEN_APPROACH = [-1.6505,-0.9990,2.3099,-0.0499,3.1415,-0.24863]
-GRIPPER_OPEN = 700
-GRIPPER_CLOSED = 300
+GRIPPER_OPEN = 740
+GRIPPER_CLOSED = 0
 GRIPPER_CUP_GRASP = []
 ###########################################################################
 def manipulator_enable(enabled):
@@ -53,7 +53,6 @@ def setGripperPosition(gripperPosition):
 		planning_group = "gripperGroup"
 		msgGripperPosition = JointPosition()
 		joint_name = ["gripper"]
-		#joint_position = gripperPosition/649.69
 		joint_position = [float(gripperPosition/649.69)]
 		msgGripperPosition.joint_name = joint_name 
 		msgGripperPosition.position = joint_position
