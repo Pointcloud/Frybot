@@ -24,7 +24,7 @@ def manipulator_enable(enabled):
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
 		print("manipulator_enable Service call failed")
-	exit(-1)
+		exit(-1)
 	return("gripper enable update complete")
 
 def manipulator_move(joints, speed):
