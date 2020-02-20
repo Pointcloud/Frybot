@@ -82,8 +82,8 @@ def make_Fries():
 	time.sleep(1) 
 
 	#move the manipulator to the container home position 
-	manipulator_move(DOOR_OPEN_APPROACH,3)
-	time.sleep(4) 
+	#manipulator_move(DOOR_OPEN_APPROACH,3)
+	#time.sleep(4) 
 
 	#move the manipulator to the home position 
 	manipulator_move(MANIPULATOR_HOME,3)
