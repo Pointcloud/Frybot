@@ -23,7 +23,7 @@ def manipulator_enable(enabled):
 		_response_enable_manipulator = enable_manipulator(set_actuator_state)
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
-		#print("Service call failed")
+		print("manipulator_enable Service call failed")
 	exit(-1)
 	return("gripper enable update complete")
 
