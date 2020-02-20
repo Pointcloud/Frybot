@@ -29,6 +29,7 @@ def manipulator_enable(enabled):
 		rospy.logerr("Service call failed: %s" % (e,))
 		print("manipulator_enable Service call failed")
 		exit(-1)
+	print("step 6")
 	return("manipulator enable update complete")
 
 def manipulator_move(joints, speed):
