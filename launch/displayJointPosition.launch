@@ -1,0 +1,1 @@
+<node name="displayJointPosition" pkg="frystation" type="displayJointPosition.sh" />
