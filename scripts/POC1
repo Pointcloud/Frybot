@@ -7,6 +7,7 @@ from open_manipulator_msgs.srv import SetActuatorState # pylint: disable=import-
 from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-error
 
 ######################### MANIPULATOR POSITIONS ###########################
+TEST1 = [0.0, -1.4191, 1.4135, 0.0, 1.2842, 0.9280]
 MANIPULATOR_HOME = [0.0,-0.7853,0.3926,0.0, 0.3926, 0.0]
 DOOR_OPEN_APPROACH = [-1.6505,-0.9990,2.3099,-0.0499,3.1415,-0.24863]
 GRIPPER_OPEN = 700
@@ -87,11 +88,19 @@ def make_Fries():
 
 	#move the manipulator to the home position 
 	manipulator_move(MANIPULATOR_HOME,3)
-	time.sleep(4) 
+	time.sleep(2) 
+
+	#move the manipulator to the test position 
+	manipulator_move(TEST1,3)
+	time.sleep(5) 
+
+	#move the manipulator to the home position 
+	manipulator_move(MANIPULATOR_HOME,3)
+	time.sleep(5) 
 
 	#close gripper
 	setGripperPosition(GRIPPER_CLOSED)
-	time.sleep(1) 
+	time.sleep(5) 
 
 	#disable joints
 	manipulator_enable(False)
