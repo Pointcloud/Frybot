@@ -11,6 +11,8 @@ TEST1 = [0.0, -1.4191, 1.4135, 0.0, 1.2842, 0.9280]
 MANIPULATOR_HOME = [0.0,-0.7853,0.3926,0.0, 0.3926, 0.0]
 DOOR_OPEN_APPROACH = [-1.4951, -1.5587, 2.6277, 0.0262, 2.9459, 0.018]
 DOOR_OPEN_POSITION_1 = [-1.4951, -1.2087, 2.6277, 0.0262, 2.9459, 0.0018]
+DOOR_OPEN_POSITION_2 = [-1.1950, -1.2086, 2.6276, 0.0261, 2.9458, 0.0018]
+DOOR_OPEN_POSITION_3 = [1.2891, 0.9060, 0.5115, -0.0733, 2.7494, 0.0018]
 GRIPPER_OPEN = 700
 GRIPPER_CLOSED = 0
 GRIPPER_CUP_GRASP = []
@@ -87,16 +89,20 @@ def make_Fries():
 	setGripperPosition(GRIPPER_OPEN)
 	time.sleep(1) 
 
-	#move the manipulator to the test position 
+	#move the manipulator to door approach position
 	manipulator_move(DOOR_OPEN_APPROACH ,3)
 	time.sleep(5) 
 
-	#move the manipulator to the home position 
+	#move the manipulator to the door open position 1
 	manipulator_move(DOOR_OPEN_POSITION_1,1)
 	time.sleep(5) 
 
-	#move the manipulator to the test position 
-	#manipulator_move(DOOR_OPEN_APPROACH,1)
+	#move the manipulator to the door open position 2
+	#manipulator_move(DOOR_OPEN_POSITION_2,1)
+	#time.sleep(5) 
+
+	#move the manipulator to the door open position 3
+	#manipulator_move(DOOR_OPEN_POSITION_3,3)
 	#time.sleep(5) 
 
 	#move back to the home position
