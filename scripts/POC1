@@ -9,7 +9,8 @@ from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-err
 ######################### MANIPULATOR POSITIONS ###########################
 TEST1 = [0.0, -1.4191, 1.4135, 0.0, 1.2842, 0.9280]
 MANIPULATOR_HOME = [0.0,-0.7853,0.3926,0.0, 0.3926, 0.0]
-DOOR_OPEN_APPROACH = [-1.6505,-0.9990,2.3099,-0.0499,3.1415,-0.24863]
+DOOR_OPEN_APPROACH = [-1.4951, -1.5587, 2.6277, 0.0262, 2.9459, 0.018]
+DOOR_OPEN_POSITION_1 = [-1.4951, -1.2087, 2.6277, 0.0262, 2.9459, 0.0018]
 GRIPPER_OPEN = 700
 GRIPPER_CLOSED = 0
 GRIPPER_CUP_GRASP = []
@@ -78,29 +79,29 @@ def make_Fries():
 	manipulator_enable(True)
 	time.sleep(1) 
 
+	#this returns an error
+	manipulator_move(MANIPULATOR_HOME,1)
+	time.sleep(1) 
+
 	#open gripper
 	setGripperPosition(GRIPPER_OPEN)
 	time.sleep(1) 
 
-	#move the manipulator to the container home position 
-	#manipulator_move(DOOR_OPEN_APPROACH,3)
-	#time.sleep(4) 
+	#move the manipulator to the test position 
+	manipulator_move(DOOR_OPEN_APPROACH ,3)
+	time.sleep(5) 
 
 	#move the manipulator to the home position 
-	manipulator_move(MANIPULATOR_HOME,3)
-	time.sleep(2) 
+	manipulator_move(DOOR_OPEN_POSITION_1,1)
+	time.sleep(5) 
 
 	#move the manipulator to the test position 
-	manipulator_move(TEST1,3)
+	manipulator_move(DOOR_OPEN_APPROACH,1)
 	time.sleep(5) 
 
-	#move the manipulator to the home position 
+	#move back to the home position
 	manipulator_move(MANIPULATOR_HOME,3)
-	time.sleep(5) 
-
-	#close gripper
-	setGripperPosition(GRIPPER_CLOSED)
-	time.sleep(5) 
+	time.sleep(1) 
 
 	#disable joints
 	manipulator_enable(False)
