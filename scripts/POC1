@@ -10,12 +10,16 @@ from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-err
 TEST1 = [0.0, -1.4191, 1.4135, 0.0, 1.2842, 0.9280]
 MANIPULATOR_HOME = [0.0,-0.785,0.3926,0.0, 0.3926, 0.0]
 DOOR_OPEN_APPROACH = [-1.400, -1.504, 2.500, 0.026, 2.946, -1.349]
-DOOR_OPEN_POSITION_1 = [-1.400, -1.504, 2.700, 0.026, 2.946, -1.349]
-DOOR_OPEN_POSITION_2 = [-1.200, -1.504, 2.700, 0.026, 2.946, -1.349]
-DOOR_OPEN_POSITION_3 = [1.435,0.472,0.865,-0.001, 2.693, 0.0]
+DOOR_OPEN_POSITION_1 = [-1.400, -1.504, 2.720, 0.026, 2.946, -1.349]
+DOOR_OPEN_POSITION_2 = [1.0, -1.5, 2.72, 0.026, 2.946, -1.0]
+DOOR_OPEN_POSITION_3 = [-0.5, -1.6, 2.52, 0.026, 2.946, -1.0]
+DOOR_OPEN_POSITION_4 = [-0.748, -0.222, 2.520, 0.026, 2.378. 0.477]
+DOOR_OPEN_POSITION_5 = [0.150, 0.431, 1.720, 0.026, 2.000, 1.381]
 GRIPPER_OPEN = 700
 GRIPPER_CLOSED = 0
 GRIPPER_CUP_GRASP = []
+
+NEW_DOOR_OPEN_POSITION_3 = [1.0, 0.095, 1.461, 0.026, 2.583,-1.349]
 ###########################################################################
 def manipulator_enable(enabled):
 	print("starting manipulator_enable")
@@ -90,24 +94,36 @@ def make_Fries():
 	time.sleep(1) 
 
 	#move the manipulator to door approach position
-	manipulator_move(DOOR_OPEN_APPROACH ,3)
+	manipulator_move(DOOR_OPEN_APPROACH,5)
 	time.sleep(5) 
 
 	#move the manipulator to the door open position 1
-	manipulator_move(DOOR_OPEN_POSITION_1,1)
+	manipulator_move(DOOR_OPEN_POSITION_1,5)
 	time.sleep(5) 
 
 	#move the manipulator to the door open position 2
-	manipulator_move(DOOR_OPEN_POSITION_2,1)
+	manipulator_move(DOOR_OPEN_POSITION_2,5)
 	time.sleep(5) 
 
 	#move the manipulator to the door open position 3
-	manipulator_move(DOOR_OPEN_POSITION_3,3)
+	manipulator_move(DOOR_OPEN_POSITION_3,5)
+	time.sleep(5) 
+
+	#move the manipulator to the door open position 3
+	manipulator_move(DOOR_OPEN_POSITION_4,5)
+	time.sleep(5) 
+
+	#move the manipulator to the door open position 3
+	manipulator_move(DOOR_OPEN_POSITION_5,5)
+	time.sleep(5) 
+
+	#return to home position
+	manipulator_move(MANIPULATOR_HOME,5)
 	time.sleep(5) 
 
 	#disable joints
-	#manipulator_enable(False)
-	#time.sleep(1) 
+	manipulator_enable(False)
+	time.sleep(1) 
 
 if __name__=='__main__':
 	try:
