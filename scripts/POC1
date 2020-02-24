@@ -13,14 +13,14 @@ DOOR_OPEN_APPROACH = [-1.400, -1.504, 2.500, 0.026, 2.946, -1.349]
 DOOR_OPEN_POSITION_1 = [-1.400, -1.504, 2.720, 0.026, 2.946, -1.349]
 DOOR_OPEN_POSITION_2 = [1.0, -1.5, 2.72, 0.026, 2.946, -1.0]
 DOOR_OPEN_POSITION_3 = [-0.5, -1.6, 2.52, 0.026, 2.946, -1.0]
-DOOR_OPEN_POSITION_4 = [-0.748, -0.222, 2.520, 0.026, 2.378. 0.477]
+DOOR_OPEN_POSITION_4 = [-0.748, -0.222, 2.520, 0.026, 2.378, 0.477]
 DOOR_OPEN_POSITION_5 = [0.150, 0.431, 1.720, 0.026, 2.000, 1.381]
 GRIPPER_OPEN = 700
 GRIPPER_CLOSED = 0
-GRIPPER_CUP_GRASP = []
+GRIPPER_CUP_GRASP = [0] 
 
 NEW_DOOR_OPEN_POSITION_3 = [1.0, 0.095, 1.461, 0.026, 2.583,-1.349]
-###########################################################################
+##############################################################################
 def manipulator_enable(enabled):
 	print("starting manipulator_enable")
 	rospy.wait_for_service('/open_manipulator_pro/set_actuator_state')
