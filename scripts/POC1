@@ -29,6 +29,12 @@ CUP_FRYER_DUMP = [-1.226, 0.189, 0.766, -3.062, 0.135, 2.563]
 CUP_CUP_STAND_APPROACH = [-2.570, -0.452, 1.930, -3.062, 0.135, -2.892]
 CUP_CUP_STAND_POSITION = [-2.770, 0.239, 1.449, -3.062, 0.135, -3.076]
 
+DOOR_CLOSE_1 = [0.198, 1.179, 0.396, 0.003, 0.778, 0.003]
+DOOR_CLOSE_2 = [0.198, 1.079, 0.396, 0.003, 1.559, 0.003]
+DOOR_CLOSE_3 = [0.033, 0.708, 0.622, 0.003, 2.905, -1.796]
+DOOR_CLOSE_4 = [-0.666, -0.680, 2.171, 0.003, 2.962, -3.050]
+DOOR_CLOSE_5 = [-0.171, -0.680, 2.171, 0.003, 2.962, -3.050]
+
 ##############################################################################
 def manipulator_enable(enabled):
 	print("starting manipulator_enable")
@@ -125,8 +131,6 @@ def make_Fries():
 	#move the manipulator to the door open position 3
 	manipulator_move(DOOR_OPEN_POSITION_5,5)
 	time.sleep(5) 
-
-
 
 	#disable joints
 	#manipulator_enable(False)
