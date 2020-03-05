@@ -151,7 +151,7 @@ def make_Fries():
 
 	#return to home position
 	manipulator_move(MANIPULATOR_HOME,5)
-	time.sleep(1) 
+	time.sleep(5) 
 
 	#disable joints
 	#manipulator_enable(False)
