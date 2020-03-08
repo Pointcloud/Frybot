@@ -9,7 +9,7 @@ from open_manipulator_msgs.msg import JointPosition # pylint: disable=import-err
 ######################### MANIPULATOR POSITIONS ###########################
 MANIPULATOR_HOME = [0.0,-0.785,0.393 ,0.00, 0.393, 0.0]
 
-GRIPPER_OPEN = [1.10]
+GRIPPER_OPEN = [750]
 GRIPPER_CLOSED = [0.000]
 GRIPPER_BASKET_GRIP = [0.030]
 GRIPPER_CUP_GRASP = [0.750]
