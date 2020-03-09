@@ -1,0 +1,11 @@
+<launch>
+    <include file="$(find open_manipulator_pro_controller)/launch/open_manipulator_pro_controller.launch">
+        <arg name="with_gripper" value="true" />    
+    </include>
+    <include file="$(find open_manipulator_pro_teleop)/launch/open_manipulator_pro_teleop_keyboard.launch">
+        <arg name="with_gripper" value="true" />    
+    </include>
+    <include file="$(find open_manipulator_pro_control_gui)/launch/open_manipulator_pro_control_gui.launch">
+        <arg name="with_gripper" value="true" />    
+    </include>
+</launch> 
