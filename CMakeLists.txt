@@ -2,7 +2,7 @@
 # Set minimum required version of cmake, project name and compile options
 ################################################################################
 cmake_minimum_required(VERSION 2.8.3)
-project(frystation)
+project(frybot)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   message_generation
   rospy
-  roscpp
+  roscppf
   open_manipulator_msgs
 )
 
@@ -64,7 +64,7 @@ generate_messages(
 
 catkin_package(
   #INCLUDE_DIRS include
-  LIBRARIES frystation
+  LIBRARIES frybot
   CATKIN_DEPENDS rospy std_msgs geometry_msgs message_runtime roscpp sensor_msgs open_manipulator_msgs
   DEPENDS system_lib
 )
@@ -80,7 +80,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/frystation.cpp
+#   src/${PROJECT_NAME}/frybot.cpp
 # )
 
 
