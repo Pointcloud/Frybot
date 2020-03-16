@@ -16,8 +16,6 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   message_generation
   rospy
-  robotis_controller_msgs
-  manipulator_h_base_module_msgs
   roscpp
   open_manipulator_msgs
 )

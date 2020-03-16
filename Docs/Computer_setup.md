@@ -4,19 +4,15 @@
 ############# Ubuntu Software ############
 ##########################################
 
-    1) Download the Ubuntu image for Raspberry PI 3 -https://downloads.ubiquityrobotics.com/pi.html
-    2) From Ubuntu run  "sudo apt install gnome-disk-utility"
-    3) Run "sudo systemctl disable magni-base" to remove ubiquity robotics specific functionality
+    1) Download the Ubuntu 18.04 image for Raspberry PI 4
+    2) write to a SD card with balenaEtcher
 
 ##########################################
 ############# ROS Software ###############
 ##########################################
 
-    1) (optional) If you did not download an image with ROS pre-installed, follow the instructions below:
-    
-        sudo apt-get update
-        $ sudo apt-get upgrade
-        $ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_kinetic.sh && chmod 755 ./install_ros_kinetic.sh && bash ./install_ros_kinetic.sh
+    1) Install ROS Melodic from Robotis script - $ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_melodic.sh && chmod 755 ./install_ros_melodic.sh && bash ./install_ros_melodic.sh
+    2) Install Additional ROS Melodic Packages -  sudo apt-get install ros-melodic-ros-controllers ros-melodic-gazebo* ros-melodic-moveit* ros-melodic-industrial-core
 
 ##########################################
 ############# The Manipulator ############
@@ -24,13 +20,15 @@
 
     1) Download the Manipulator package and dependencies
 
-        $ sudo apt-get install ros-kinetic-gazebo*
         $ cd ~/catkin_ws/src/
         $ git clone https://github.com/ROBOTIS-GIT/DynamixelSDK.git
-        $ git clone https://github.com/ROBOTIS-GIT/ROBOTIS-Framework.git
-        $ git clone https://github.com/ROBOTIS-GIT/ROBOTIS-Framework-msgs.git
-        $ git clone https://github.com/ROBOTIS-GIT/ROBOTIS-MANIPULATOR-H.git
-        $ git clone https://github.com/ROBOTIS-GIT/ROBOTIS-Math.git
+        $ git clone https://github.com/ROBOTIS-GIT/dynamixel-workbench.git
+        $ git clone https://github.com/ROBOTIS-GIT/dynamixel-workbench-msgs.git
+        $ git clone https://github.com/ROBOTIS-GIT/open_manipulator_p.git
+        $ git clone https://github.com/ROBOTIS-GIT/open_manipulator_msgs.git
+        $ git clone https://github.com/ROBOTIS-GIT/open_manipulator_p_simulations.git
+        $ git clone https://github.com/ROBOTIS-GIT/robotis_manipulator.git
+        $ cd ~/catkin_ws && catkin_make
 
     2) Build
 
@@ -45,10 +43,9 @@
 ############### The Gripper ##############
 ##########################################
 
-    1) Download the Software
+    1) Download the Additional Software
 
         $ cd ~/catkin_ws/src
-        $ git clone https://github.com/ROBOTIS-GIT/DynamixelSDK
         $ git clone https://github.com/ROBOTIS-GIT/ROBOTIS-Framework
         $ git clone https://github.com/ROBOTIS-GIT/ROBOTIS-Framework-msgs
         $ git clone https://github.com/ROBOTIS-GIT/RH-P12-RN
