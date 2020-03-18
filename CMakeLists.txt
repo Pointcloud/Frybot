@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   message_generation
   rospy
-  roscppf
+  roscpp
   open_manipulator_msgs
 )
 

@@ -1,5 +1,6 @@
 <launch>
-    <include file="$(find open_manipulator_pro_controller)/launch/open_manipulator_pro_controller.launch">
-        <arg name="with_gripper" value="true" />    
+    <include file="$(find open_manipulator_p_controller)/launch/open_manipulator_p_controller.launch">
+        <arg name="with_gripper" value="true" />
+        <arg name="control_period" value="0.030" />      
     </include>
 </launch> 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#testing the PI4
+
 import rospy # pylint: disable=import-error
 import time
 from open_manipulator_msgs.srv import SetJointPosition # pylint: disable=import-error
@@ -60,10 +60,10 @@ FRY_CHUTE_DUMP_6 = [-0.356, -0.888, 1.383, 1.410, 0.750, 0.983]
 ##############################################################################
 def manipulator_enable(enabled):
 	print("starting manipulator_enable")
-	rospy.wait_for_service('/open_manipulator_pro/set_actuator_state')
+	rospy.wait_for_service('/open_manipulator_p/set_actuator_state')
 	try:
 		set_actuator_state = enabled
-		enable_manipulator  = rospy.ServiceProxy('/open_manipulator_pro/set_actuator_state', SetActuatorState)
+		enable_manipulator  = rospy.ServiceProxy('/open_manipulator_p/set_actuator_state', SetActuatorState)
 		_response_enable_manipulator = enable_manipulator(set_actuator_state)
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
@@ -73,7 +73,7 @@ def manipulator_enable(enabled):
 
 def manipulator_move(joints, speed):
 	print("starting manipulator_move")
-	rospy.wait_for_service('/open_manipulator_pro/goal_joint_space_path')
+	rospy.wait_for_service('/open_manipulator_p/goal_joint_space_path')
 	try:
 		planning_group = "manipulatorGroup"
 		joint_name = ["joint1", "joint2", "joint3", "joint4", "joint5", "joint6"]
@@ -83,17 +83,17 @@ def manipulator_move(joints, speed):
 		msgPosition.joint_name = joint_name 
 		msgPosition.position = joint_position
 		path_time = speed
-		move_joint  = rospy.ServiceProxy('/open_manipulator_pro/goal_joint_space_path', SetJointPosition)
+		move_joint  = rospy.ServiceProxy('/open_manipulator_p/goal_joint_space_path', SetJointPosition)
 		_responseSetJointPose = move_joint(planning_group, msgPosition, path_time)
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
-		print("Call to /open_manipulator_pro/goal_joint_space_path failed")
+		print("Call to /open_manipulator_p/goal_joint_space_path failed")
 		exit(-1)
 	return("manipulator joint update complete")
 
 def setGripperPosition(gripperPosition):
 	print("starting set gripper position")
-	rospy.wait_for_service('/open_manipulator_pro/goal_tool_control')
+	rospy.wait_for_service('/open_manipulator_p/goal_tool_control')
 	try:
 		planning_group = "gripperGroup"
 		msgGripperPosition = JointPosition()
@@ -102,7 +102,7 @@ def setGripperPosition(gripperPosition):
 		msgGripperPosition.joint_name = joint_name 
 		msgGripperPosition.position = joint_position
 		path_time = 0.5
-		move_gripper  = rospy.ServiceProxy('/open_manipulator_pro/goal_tool_control', SetJointPosition)
+		move_gripper  = rospy.ServiceProxy('/open_manipulator_p/goal_tool_control', SetJointPosition)
 		_responseSetGripperPose = move_gripper(planning_group, msgGripperPosition, path_time)
 	except (rospy.ServiceException, rospy.ROSException) as e:
 		rospy.logerr("Service call failed: %s" % (e,))
